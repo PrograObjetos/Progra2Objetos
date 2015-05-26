@@ -1,7 +1,6 @@
 package progra2objetos;
 import java.util.Date;
 
-
 public class Hotel {
     private String nombre;
     private String direccion;
@@ -125,7 +124,6 @@ public class Hotel {
 
     public void setAñoConstruccion(Date añoConstruccion) {
         this.añoConstruccion = añoConstruccion;
-    }
-    
+    }   
 }
 

@@ -1,6 +1,5 @@
 package progra2objetos;
 
-dafdfdfd
 public class Progra2Objetos {
 
     

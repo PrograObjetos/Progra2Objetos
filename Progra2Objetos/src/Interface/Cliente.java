@@ -28,6 +28,9 @@ public class Cliente extends javax.swing.JFrame {
     
     public Cliente() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Register User");
     }
 
     /**
@@ -58,6 +61,7 @@ public class Cliente extends javax.swing.JFrame {
         jButtonSave = new javax.swing.JButton();
         jRadioButtonFemenino = new javax.swing.JRadioButton();
         jRadioButtonMasculino = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +112,13 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,13 +150,13 @@ public class Cliente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioButtonFemenino)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonMasculino))))
+                                .addComponent(jRadioButtonMasculino))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonSave)
+                                .addGap(54, 54, 54)
+                                .addComponent(jButton1))))
                     .addComponent(jLabel9))
-                .addContainerGap(203, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSave)
-                .addGap(69, 69, 69))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,9 +195,11 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jRadioButtonFemenino)
                     .addComponent(jRadioButtonMasculino))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonSave)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSave)
+                    .addComponent(jButton1))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,6 +246,13 @@ public class Cliente extends javax.swing.JFrame {
         gender = jRadioButtonMasculino.getLabel();
     }//GEN-LAST:event_jRadioButtonMasculinoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +290,7 @@ public class Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

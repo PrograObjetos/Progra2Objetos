@@ -25,6 +25,7 @@ public class Cliente extends javax.swing.JFrame {
     String password;
     String checkPassword;
     String age;
+    Enlacedb miconexion;
     
     public Cliente() {
         initComponents();
@@ -218,7 +219,7 @@ public class Cliente extends javax.swing.JFrame {
        age = jTextFieldAge.getText();
        
       try{  
-          Enlacedb miconexion = new Enlacedb();
+          miconexion = new Enlacedb();
           
           String sentenciaInsert = "insert into clientes values(?,?,?,?,?,?,?)";
           miconexion.psPreapararSentencias = miconexion.conect.prepareStatement(sentenciaInsert);

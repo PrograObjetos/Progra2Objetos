@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 import progra2objetos.Client;
@@ -252,10 +253,10 @@ public class NewClient extends javax.swing.JFrame {
             return;
         }
         
-        for(int i = 0; i <  ClientList.getInstanceList().clientList.size(); i++){
-            if( ClientList.getInstanceList().clientList.get(i).getName().equals(name)){
+        for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
+            if( Globals.getInstance().clientList.get(i).getName().equals(name)){
                 
-                if(ClientList.getInstanceList().clientList.get(i).getPassword().equals(encrip)){
+                if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
                     JOptionPane.showMessageDialog(this,"Contact already registered");
                     TextFieldName.setText("");
                     TextFieldLastName.setText("");
@@ -267,8 +268,8 @@ public class NewClient extends javax.swing.JFrame {
                 }
             }
         }
-        Client newclient = new Client(name, lastName, encrip, email, password, checkPassword, age);
-        ClientList.getInstanceList().clientList.add(newclient);
+        Client newclient = new Client(name, lastName, encrip, email, encrip, checkPassword, age);
+        Globals.getInstance().setUserList(newclient);
              
         TextFieldName.setText("");
         TextFieldLastName.setText("");

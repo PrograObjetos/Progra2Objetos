@@ -1,5 +1,6 @@
 package Interface;
 
+import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -30,6 +31,12 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("User:");
 
         jLabel2.setText("Password:");
+
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
 
         BtnLogin.setText("Login");
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -108,11 +115,11 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Empty Password");
             return;
         }
-        for(int i = 0; i <  ClientList.getInstanceList().clientList.size(); i++){
-            System.out.println(ClientList.getInstanceList().clientList.get(i).getName());
-            if( ClientList.getInstanceList().clientList.get(i).getName().equals(name)){
-                System.out.println(ClientList.getInstanceList().clientList.get(i).getName());
-                if(ClientList.getInstanceList().clientList.get(i).getPassword().equals(encrip)){
+        for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
+            System.out.println(Globals.getInstance().clientList.get(i).getName());
+            if( Globals.getInstance().clientList.get(i).getName().equals(name)){
+                System.out.println(Globals.getInstance().clientList.get(i).getName());
+                if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
                     hotels ht = new hotels();
                     ht.setVisible(true);
                     this.dispose();
@@ -124,6 +131,10 @@ public class Login extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_BtnLoginActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
 
     public static void main(String args[]) {

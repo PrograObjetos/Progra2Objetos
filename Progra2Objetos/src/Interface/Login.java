@@ -28,7 +28,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("User:");
+        jLabel1.setText("Email:");
 
         jLabel2.setText("Password:");
 
@@ -102,12 +102,12 @@ public class Login extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
       
-       String name = TextFieldUser.getText();
+       String email = TextFieldUser.getText();
        String pass = new String(PasswordField.getPassword());
        String encrip = DigestUtils.md5Hex(pass);
        
         
-        if(name.equals("")){
+        if(email.equals("")){
             JOptionPane.showMessageDialog(this,"Empty name");
             return;
         }
@@ -116,17 +116,27 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
-            System.out.println(Globals.getInstance().clientList.get(i).getName());
-            if( Globals.getInstance().clientList.get(i).getName().equals(name)){
-                System.out.println(Globals.getInstance().clientList.get(i).getName());
+            if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
-                    InterfaceClient ht = new InterfaceClient();
-                    ht.setVisible(true);
+                    InterfaceClient cliente = new InterfaceClient();
+                    cliente.setVisible(true);
                     this.dispose();
                     return;
                 }
             }
         }
+        
+        for(int i = 0; i <  Globals.getInstance().adminList.size(); i++){
+            if( Globals.getInstance().adminList.get(i).getEmail().equals(email)){
+                if(Globals.getInstance().adminList.get(i).getPassWord().equals(encrip)){
+                    InterfaceAdmin admin = new InterfaceAdmin();
+                    admin.setVisible(true);
+                    this.dispose();
+                    return;
+                }
+            }
+        }
+        
         JOptionPane.showMessageDialog(null, "User or password incorrect !!");
         
         

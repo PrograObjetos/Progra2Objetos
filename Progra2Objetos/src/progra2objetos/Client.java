@@ -60,9 +60,6 @@ public class Client {
         this.Currency = Currency;
     }
     
-    
-    
-
     public String getName() {
         return name;
     }

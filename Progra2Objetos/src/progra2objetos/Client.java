@@ -14,7 +14,7 @@ public class Client {
     private int phonenumber;
     private String Currency;
 
-    public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int membershipnumber, int age, String country, int phonenumber, String moneda) {
+    public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int membershipnumber, int age, String country, int phonenumber, String Currency) {
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
@@ -25,7 +25,7 @@ public class Client {
         this.age = age;
         this.country = country;
         this.phonenumber = phonenumber;
-        this.Currency = moneda;
+        this.Currency = Currency;
     }
 
     public int getMembershipnumber() {
@@ -52,12 +52,12 @@ public class Client {
         this.phonenumber = phonenumber;
     }
 
-    public String getMoneda() {
+    public String getCurrency() {
         return Currency;
     }
 
-    public void setMoneda(String moneda) {
-        this.Currency = moneda;
+    public void setCurrency(String Currency) {
+        this.Currency = Currency;
     }
     
     

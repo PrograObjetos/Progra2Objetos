@@ -25,7 +25,7 @@ public class Globals {
         return instance;
     }
 
-    public ArrayList<Client> getUserList() {
+    public  ArrayList<Client> getUserList() {
         return instance.clientList;
     }
 
@@ -39,6 +39,24 @@ public class Globals {
     public void setAdminList(Admin admin){
         instance.adminList.add(admin);
     }
+
+    public ArrayList<Service> getServicesList() {
+        return instance.servicesList;
+    }
+
+    public void setServicesList(Service newService) {
+        instance.servicesList.add(newService);
+    }
+
+    public ArrayList<Attraction> getAttractionsList() {
+        return instance.attractionsList;
+    }
+
+    public void setAttractionsList(Attraction newAttraction) {
+        instance.attractionsList.add(newAttraction);
+    }
+    
+    
              
     
      

@@ -92,6 +92,7 @@ public class NewClient extends javax.swing.JFrame {
         });
 
         Genero.add(RadioButtonFemenino);
+        RadioButtonFemenino.setSelected(true);
         RadioButtonFemenino.setText("Female");
         RadioButtonFemenino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,9 +108,9 @@ public class NewClient extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RadioButtonFemenino)
-                .addGap(18, 18, 18)
-                .addComponent(RadioButtonMasculino)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(RadioButtonMasculino, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +150,7 @@ public class NewClient extends javax.swing.JFrame {
                         .addGap(0, 219, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,13 +246,14 @@ public class NewClient extends javax.swing.JFrame {
         String email = TextFieldEmail.getText();
         String password = TextFieldPassword.getText();
         String encrip = DigestUtils.md5Hex(password);
-        System.out.println(password);
-        System.out.println(encrip);
+        //System.out.println(password);
+        //System.out.println(encrip);
         String checkPassword = TextFieldRePassword.getText();
         int age;
         String country = TextFieldCountry.getText();
         String Currency = ComboBoxCurrency.getSelectedItem().toString();
         int phonenumber;
+        String gender;
         
                
         if(!password.equals(checkPassword)){
@@ -303,6 +305,12 @@ public class NewClient extends javax.swing.JFrame {
             return;
         }
         
+        if(RadioButtonFemenino.isSelected()){
+            gender = RadioButtonFemenino.getLabel();
+        }
+        else{
+            gender = RadioButtonMasculino.getLabel();
+        }
         
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
             if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
@@ -319,11 +327,8 @@ public class NewClient extends javax.swing.JFrame {
             }
         }
         
-        
-        
-        
         int membershipnumber=3;
-        Client newclient = new Client(name, lastName, encrip, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
+        Client newclient = new Client(name, lastName, gender, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
         Globals.getInstance().setUserList(newclient);
         membershipnumber++;
              

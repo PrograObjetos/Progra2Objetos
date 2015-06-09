@@ -116,6 +116,7 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
+            System.out.println(Globals.getInstance().clientList.get(i).getGender());
             if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
                     InterfaceClient cliente = new InterfaceClient();

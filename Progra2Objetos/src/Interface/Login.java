@@ -1,5 +1,7 @@
 package Interface;
 
+import Interface.IntarfaceClient.InterfaceClient;
+import Interface.InterfaceAdmin.InterfaceAdmin;
 import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;

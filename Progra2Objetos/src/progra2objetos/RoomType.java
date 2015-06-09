@@ -2,28 +2,100 @@ package progra2objetos;
 
 
 public class RoomType {
-    private String tipoCama;
-    private int numeroMaxPersonas;
-    private String tipoHabitacion;
-    private String descripcion;
-    private boolean salon;
-    private boolean terraza;
-    private boolean vistaMar;
-    private boolean todoIncluido;
-    private boolean fumar;
+    private String bedding;
+    private int maximumPersons;
+    private String roomType;
+    private String description;
+    private boolean living;
+    private boolean terrace;
+    private boolean seaview;
+    private boolean allInclusive;
+    private boolean smoke;
     private int roomSize;
 
-    public RoomType(String tipoCama, int numeroMaxPersonas, String tipoHabitacion, String descripcion, boolean salon, boolean terraza, boolean vistaMar, boolean todoIncluido, boolean fumar, int roomSize) {
-        this.tipoCama = tipoCama;
-        this.numeroMaxPersonas = numeroMaxPersonas;
-        this.tipoHabitacion = tipoHabitacion;
-        this.descripcion = descripcion;
-        this.salon = false;
-        this.terraza = false;
-        this.vistaMar = false;
-        this.todoIncluido = false;
-        this.fumar = false;
-        this.roomSize= roomSize;
+    public RoomType(String bedding, int maximumPersons, String roomType, String description, boolean living, boolean terrace, boolean seaview, boolean allInclusive, boolean smoke, int roomSize) {
+        this.bedding = bedding;
+        this.maximumPersons = maximumPersons;
+        this.roomType = roomType;
+        this.description = description;
+        this.living = living;
+        this.terrace = terrace;
+        this.seaview = seaview;
+        this.allInclusive = allInclusive;
+        this.smoke = smoke;
+        this.roomSize = roomSize;
+    }
+
+    public String getBedding() {
+        return bedding;
+    }
+
+    public void setBedding(String bedding) {
+        this.bedding = bedding;
+    }
+
+    public int getMaximumPersons() {
+        return maximumPersons;
+    }
+
+    public void setMaximumPersons(int maximumPersons) {
+        this.maximumPersons = maximumPersons;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isLiving() {
+        return living;
+    }
+
+    public void setLiving(boolean living) {
+        this.living = living;
+    }
+
+    public boolean isTerrace() {
+        return terrace;
+    }
+
+    public void setTerrace(boolean terrace) {
+        this.terrace = terrace;
+    }
+
+    public boolean isSeaview() {
+        return seaview;
+    }
+
+    public void setSeaview(boolean seaview) {
+        this.seaview = seaview;
+    }
+
+    public boolean isAllInclusive() {
+        return allInclusive;
+    }
+
+    public void setAllInclusive(boolean allInclusive) {
+        this.allInclusive = allInclusive;
+    }
+
+    public boolean isSmoke() {
+        return smoke;
+    }
+
+    public void setSmoke(boolean smoke) {
+        this.smoke = smoke;
     }
 
     public int getRoomSize() {
@@ -33,77 +105,8 @@ public class RoomType {
     public void setRoomSize(int roomSize) {
         this.roomSize = roomSize;
     }
+
     
-    public String getTipoCama() {
-        return tipoCama;
-    }
-
-    public void setTipoCama(String tipoCama) {
-        this.tipoCama = tipoCama;
-    }
-
-    public int getNumeroMaxPersonas() {
-        return numeroMaxPersonas;
-    }
-
-    public void setNumeroMaxPersonas(int numeroMaxPersonas) {
-        this.numeroMaxPersonas = numeroMaxPersonas;
-    }
-
-    public String getTipoHabitacion() {
-        return tipoHabitacion;
-    }
-
-    public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public boolean isSalon() {
-        return salon;
-    }
-
-    public void setSalon(boolean salon) {
-        this.salon = salon;
-    }
-
-    public boolean isTerraza() {
-        return terraza;
-    }
-
-    public void setTerraza(boolean terraza) {
-        this.terraza = terraza;
-    }
-
-    public boolean isVistaMar() {
-        return vistaMar;
-    }
-
-    public void setVistaMar(boolean vistaMar) {
-        this.vistaMar = vistaMar;
-    }
-
-    public boolean isTodoIncluido() {
-        return todoIncluido;
-    }
-
-    public void setTodoIncluido(boolean todoIncluido) {
-        this.todoIncluido = todoIncluido;
-    }
-
-    public boolean isFumar() {
-        return fumar;
-    }
-
-    public void setFumar(boolean fumar) {
-        this.fumar = fumar;
-    }
+   
     
 }

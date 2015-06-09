@@ -13,7 +13,6 @@ public class Globals {
     Globals() {
     
     }
-    
     public static Globals getInstance(){
         
         if(instance == null){
@@ -29,6 +28,14 @@ public class Globals {
     public void setUserList(Client user) {
         instance.clientList.add(user);
     }
+    public ArrayList<Admin> getAdminList(){
+         return instance.adminList;
+    }
+    
+    public void setAdminList(Admin admin){
+        instance.adminList.add(admin);
+    }
+             
     
      
 }

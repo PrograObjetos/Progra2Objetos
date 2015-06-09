@@ -120,7 +120,7 @@ public class Login extends javax.swing.JFrame {
             if( Globals.getInstance().clientList.get(i).getName().equals(name)){
                 System.out.println(Globals.getInstance().clientList.get(i).getName());
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
-                    hotels ht = new hotels();
+                    InterfaceClient ht = new InterfaceClient();
                     ht.setVisible(true);
                     this.dispose();
                     return;

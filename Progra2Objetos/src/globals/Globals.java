@@ -4,11 +4,15 @@ package globals;
 import progra2objetos.Client;
 import java.util.ArrayList;
 import progra2objetos.Admin;
+import progra2objetos.Attraction;
+import progra2objetos.Service;
 
 public class Globals {
      public static Globals instance;
      public ArrayList<Client> clientList =  new ArrayList<>();
      public ArrayList<Admin> adminList = new ArrayList<>();
+     public ArrayList<Service> servicesList = new ArrayList<>();
+     public ArrayList<Attraction> attractionsList = new ArrayList<>();
      
     Globals() {
     

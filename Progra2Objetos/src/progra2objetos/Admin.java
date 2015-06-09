@@ -10,16 +10,26 @@ package progra2objetos;
  * @author kevin
  */
 public class Admin {
+    private String name;
     private String email;
     private String passWord;
     private String checkPassWord;
 
-    public Admin(String email, String passWord, String checkPassWord) {
+    public Admin(String email, String passWord, String checkPassWord, String name) {
         this.email = email;
         this.passWord = passWord;
         this.checkPassWord = checkPassWord;
+        this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getEmail() {
         return email;
     }

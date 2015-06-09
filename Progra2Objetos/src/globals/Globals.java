@@ -3,10 +3,12 @@ package globals;
 
 import progra2objetos.Client;
 import java.util.ArrayList;
+import progra2objetos.Admin;
 
 public class Globals {
      public static Globals instance;
-     public ArrayList<Client> clientList = clientList = new ArrayList<>();;
+     public ArrayList<Client> clientList =  new ArrayList<>();
+     public ArrayList<Admin> adminList = new ArrayList<>();
      
     Globals() {
     

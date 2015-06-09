@@ -8,17 +8,60 @@ public class Client {
     private String email;
     private String password;
     private String checkPassword;
+    private int membershipnumber;
     private int age;
+    private String country;
+    private int phonenumber;
+    private String moneda;
 
-    public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int age) {
+    public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int membershipnumber, int age, String country, int phonenumber, String moneda) {
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
         this.password = password;
         this.checkPassword = checkPassword;
+        this.membershipnumber = membershipnumber;
         this.age = age;
+        this.country = country;
+        this.phonenumber = phonenumber;
+        this.moneda = moneda;
     }
+
+    public int getMembershipnumber() {
+        return membershipnumber;
+    }
+
+    public void setMembershipnumber(int membershipnumber) {
+        this.membershipnumber = membershipnumber;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
+    
+    
+    
 
     public String getName() {
         return name;

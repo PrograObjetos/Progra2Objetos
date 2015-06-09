@@ -1,7 +1,7 @@
 package progra2objetos;
 
 
-public class TipoHabitacion {
+public class RoomType {
     private String tipoCama;
     private int numeroMaxPersonas;
     private String tipoHabitacion;
@@ -11,8 +11,9 @@ public class TipoHabitacion {
     private boolean vistaMar;
     private boolean todoIncluido;
     private boolean fumar;
+    private int roomSize;
 
-    public TipoHabitacion(String tipoCama, int numeroMaxPersonas, String tipoHabitacion, String descripcion, boolean salon, boolean terraza, boolean vistaMar, boolean todoIncluido, boolean fumar) {
+    public RoomType(String tipoCama, int numeroMaxPersonas, String tipoHabitacion, String descripcion, boolean salon, boolean terraza, boolean vistaMar, boolean todoIncluido, boolean fumar, int roomSize) {
         this.tipoCama = tipoCama;
         this.numeroMaxPersonas = numeroMaxPersonas;
         this.tipoHabitacion = tipoHabitacion;
@@ -22,8 +23,17 @@ public class TipoHabitacion {
         this.vistaMar = false;
         this.todoIncluido = false;
         this.fumar = false;
+        this.roomSize= roomSize;
     }
 
+    public int getRoomSize() {
+        return roomSize;
+    }
+
+    public void setRoomSize(int roomSize) {
+        this.roomSize = roomSize;
+    }
+    
     public String getTipoCama() {
         return tipoCama;
     }

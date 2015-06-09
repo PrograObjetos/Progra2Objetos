@@ -9,15 +9,15 @@ public class Card {
     private  String type;
     private  int cardNumber;
     private  int securityCode;
-    private  Date expiraionDate;
+    private  Date expirationDate;
 
-    public Card(String name, String lastName, String type, int cardNumber, int securityCode, Date expiraionDate) {
+    public Card(String name, String lastName, String type, int cardNumber, int securityCode, Date expirationDate) {
         this.name = name;
         this.lastName = lastName;
         this.type = type;
         this.cardNumber = cardNumber;
         this.securityCode = securityCode;
-        this.expiraionDate = expiraionDate;
+        this.expirationDate = expirationDate;
     }
 
     public String getName() {
@@ -60,12 +60,12 @@ public class Card {
         this.securityCode = securityCode;
     }
 
-    public Date getExpiraionDate() {
-        return expiraionDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpiraionDate(Date expiraionDate) {
-        this.expiraionDate = expiraionDate;
+    public void setExpiraionDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
     
 }

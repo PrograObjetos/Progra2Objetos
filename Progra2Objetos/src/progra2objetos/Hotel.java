@@ -1,129 +1,165 @@
 package progra2objetos;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Hotel {
-    private String nombre;
-    private String direccion;
-    private String pais;
-    private int telefono;
-    private int numeroEstrellas;
-    private String tipoHospedaje;
-    private String tamanoHotel;
-    private Date horaCheckIn;
-    private Date hoaCheckOu;
-    private String requisitosCheckIn;
-    private String serviciosOfrece;
-    private Date añoConstruccion;
+    private String name;
+    private String address;
+    private String country;
+    private int phoneNumber;
+    private int stars;
+    private String typeAccommodation;
+    private String sizeHotel;
+    private ArrayList<Room> roomsList;
+    private ArrayList<Service> servicesList;
+    private ArrayList<Attraction> AttractionList;
+    
+    private Date timeCheckIn;
+    private Date timeCheckOu;
+    private String requirementsCheckIn;
+    private String services;
+    private Date yearBuilt;
 
-    public Hotel(String nombre, String direccion, String pais, int telefono, int numeroEstrellas, String tipoHospedaje, String tamanoHotel, Date horaCheckIn, Date hoaCheckOu, String requisitosCheckIn, String serviciosOfrece, Date añoConstruccion) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.pais = pais;
-        this.telefono = telefono;
-        this.numeroEstrellas = numeroEstrellas;
-        this.tipoHospedaje = tipoHospedaje;
-        this.tamanoHotel = tamanoHotel;
-        this.horaCheckIn = horaCheckIn;
-        this.hoaCheckOu = hoaCheckOu;
-        this.requisitosCheckIn = requisitosCheckIn;
-        this.serviciosOfrece = serviciosOfrece;
-        this.añoConstruccion = añoConstruccion;
+    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, Date timeCheckIn, Date timeCheckOu, String requirementsCheckIn, String services, Date yearBuilt) {
+        this.name = name;
+        this.address = address;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.stars = stars;
+        this.typeAccommodation = typeAccommodation;
+        this.sizeHotel = sizeHotel;
+        this.timeCheckIn = timeCheckIn;
+        this.timeCheckOu = timeCheckOu;
+        this.requirementsCheckIn = requirementsCheckIn;
+        this.services = services;
+        this.yearBuilt = yearBuilt;
+        this.roomsList = new ArrayList<>();
+        this.servicesList = new ArrayList<>();
+        this.AttractionList = new ArrayList<>();
     }
 
-    public String getNombre() {
-        return nombre;
+    public ArrayList<Room> getRoomsList() {
+        return roomsList;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNewRoom(Room newroom) {
+        this.roomsList.add(newroom);
     }
 
-    public String getDireccion() {
-        return direccion;
+    public ArrayList<Service> getServicesList() {
+        return servicesList;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setNewServices(Service newservice) {
+        this.servicesList.add(newservice);
     }
 
-    public String getPais() {
-        return pais;
+    public ArrayList<Attraction> getAttractionList() {
+        return AttractionList;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setNewAttraction(Attraction newAttraction) {
+        this.AttractionList.add(newAttraction);
+    }
+    
+     
+    
+    public String getName() {
+        return name;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public String getAddress() {
+        return address;
     }
 
-    public int getNumeroEstrellas() {
-        return numeroEstrellas;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setNumeroEstrellas(int numeroEstrellas) {
-        this.numeroEstrellas = numeroEstrellas;
+    public String getCountry() {
+        return country;
     }
 
-    public String getTipoHospedaje() {
-        return tipoHospedaje;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public void setTipoHospedaje(String tipoHospedaje) {
-        this.tipoHospedaje = tipoHospedaje;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getTamanoHotel() {
-        return tamanoHotel;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setTamanoHotel(String tamanoHotel) {
-        this.tamanoHotel = tamanoHotel;
+    public int getStars() {
+        return stars;
     }
 
-    public Date getHoraCheckIn() {
-        return horaCheckIn;
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
-    public void setHoraCheckIn(Date horaCheckIn) {
-        this.horaCheckIn = horaCheckIn;
+    public String getTypeAccommodation() {
+        return typeAccommodation;
     }
 
-    public Date getHoaCheckOu() {
-        return hoaCheckOu;
+    public void setTypeAccommodation(String typeAccommodation) {
+        this.typeAccommodation = typeAccommodation;
     }
 
-    public void setHoaCheckOu(Date hoaCheckOu) {
-        this.hoaCheckOu = hoaCheckOu;
+    public String getSizeHotel() {
+        return sizeHotel;
     }
 
-    public String getRequisitosCheckIn() {
-        return requisitosCheckIn;
+    public void setSizeHotel(String sizeHotel) {
+        this.sizeHotel = sizeHotel;
     }
 
-    public void setRequisitosCheckIn(String requisitosCheckIn) {
-        this.requisitosCheckIn = requisitosCheckIn;
+    public Date getTimeCheckIn() {
+        return timeCheckIn;
     }
 
-    public String getServiciosOfrece() {
-        return serviciosOfrece;
+    public void setTimeCheckIn(Date timeCheckIn) {
+        this.timeCheckIn = timeCheckIn;
     }
 
-    public void setServiciosOfrece(String serviciosOfrece) {
-        this.serviciosOfrece = serviciosOfrece;
+    public Date getTimeCheckOu() {
+        return timeCheckOu;
     }
 
-    public Date getAñoConstruccion() {
-        return añoConstruccion;
+    public void setTimeCheckOu(Date timeCheckOu) {
+        this.timeCheckOu = timeCheckOu;
     }
 
-    public void setAñoConstruccion(Date añoConstruccion) {
-        this.añoConstruccion = añoConstruccion;
-    }   
+    public String getRequirementsCheckIn() {
+        return requirementsCheckIn;
+    }
+
+    public void setRequirementsCheckIn(String requirementsCheckIn) {
+        this.requirementsCheckIn = requirementsCheckIn;
+    }
+
+    public String getServices() {
+        return services;
+    }
+
+    public void setServices(String services) {
+        this.services = services;
+    }
+
+    public Date getYearBuilt() {
+        return yearBuilt;
+    }
+
+    public void setYearBuilt(Date yearBuilt) {
+        this.yearBuilt = yearBuilt;
+    }
+
+    
 }
 

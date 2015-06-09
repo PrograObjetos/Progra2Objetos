@@ -248,10 +248,11 @@ public class NewClient extends javax.swing.JFrame {
         System.out.println(password);
         System.out.println(encrip);
         String checkPassword = TextFieldRePassword.getText();
-        int age = Integer.parseInt(TextFieldAge.getText());
+        int age;
         String country = TextFieldCountry.getText();
         String Currency = ComboBoxCurrency.getSelectedItem().toString();
-        int phonenumber = Integer.parseInt(TextFieldPhoneNumber.getText());
+        int phonenumber;
+        
                
         if(!password.equals(checkPassword)){
             JOptionPane.showMessageDialog(this, "password and check password different");
@@ -292,9 +293,19 @@ public class NewClient extends javax.swing.JFrame {
             return;
         }
         
+        try{
+            phonenumber = Integer.parseInt(TextFieldPhoneNumber.getText());  
+           
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Numbers only");
+            TextFieldPhoneNumber.setText("");
+            return;
+        }
+        
+        
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
-            if( Globals.getInstance().clientList.get(i).getName().equals(name)){
-                
+            if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
                     JOptionPane.showMessageDialog(this,"Contact already registered");
                     TextFieldName.setText("");
@@ -307,6 +318,10 @@ public class NewClient extends javax.swing.JFrame {
                 }
             }
         }
+        
+        
+        
+        
         int membershipnumber=3;
         Client newclient = new Client(name, lastName, encrip, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
         Globals.getInstance().setUserList(newclient);
@@ -327,7 +342,7 @@ public class NewClient extends javax.swing.JFrame {
 
         Login log = new Login();
         log.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void RadioButtonFemeninoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioButtonFemeninoMouseClicked

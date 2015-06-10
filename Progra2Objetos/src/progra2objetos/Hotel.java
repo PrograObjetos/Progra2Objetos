@@ -1,4 +1,5 @@
 package progra2objetos;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,13 +15,12 @@ public class Hotel {
     private ArrayList<Service> servicesList;
     private ArrayList<Attraction> AttractionList;
     
-    private Date timeCheckIn;
-    private Date timeCheckOut;
+    private Time timeCheckIn;
+    private Time timeCheckOut;
     private String requirementsCheckIn;
-    private String services;
     private Date yearBuilt;
 
-    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, Date timeCheckIn, Date timeCheckOu, String requirementsCheckIn, String services, Date yearBuilt) {
+    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, Time timeCheckIn, Time timeCheckOu, String requirementsCheckIn, Date yearBuilt) {
         this.name = name;
         this.address = address;
         this.country = country;
@@ -31,7 +31,6 @@ public class Hotel {
         this.timeCheckIn = timeCheckIn;
         this.timeCheckOut = timeCheckOu;
         this.requirementsCheckIn = requirementsCheckIn;
-        this.services = services;
         this.yearBuilt = yearBuilt;
         this.roomsList = new ArrayList<>();
         this.servicesList = new ArrayList<>();
@@ -61,8 +60,6 @@ public class Hotel {
     public void setNewAttraction(Attraction newAttraction) {
         this.AttractionList.add(newAttraction);
     }
-    
-     
     
     public String getName() {
         return name;
@@ -120,36 +117,29 @@ public class Hotel {
         this.sizeHotel = sizeHotel;
     }
 
-    public Date getTimeCheckIn() {
+    public Time getTimeCheckIn() {
         return timeCheckIn;
     }
 
-    public void setTimeCheckIn(Date timeCheckIn) {
+    public void setTimeCheckIn(Time timeCheckIn) {
         this.timeCheckIn = timeCheckIn;
     }
 
-    public Date getTimeCheckOut() {
+    public Time getTimeCheckOut() {
         return timeCheckOut;
     }
 
-    public void setTimeCheckOut(Date timeCheckOut) {
+    public void setTimeCheckOut(Time timeCheckOut) {
         this.timeCheckOut = timeCheckOut;
     }
 
+   
     public String getRequirementsCheckIn() {
         return requirementsCheckIn;
     }
 
     public void setRequirementsCheckIn(String requirementsCheckIn) {
         this.requirementsCheckIn = requirementsCheckIn;
-    }
-
-    public String getServices() {
-        return services;
-    }
-
-    public void setServices(String services) {
-        this.services = services;
     }
 
     public Date getYearBuilt() {

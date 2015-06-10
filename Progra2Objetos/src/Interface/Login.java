@@ -1,7 +1,7 @@
 package Interface;
 
-import Interface.IntarfaceClient.InterfaceClient;
-import Interface.InterfaceAdmin.InterfaceAdmin;
+import IntarfaceClient.InterfaceClient;
+import InterfaceAdmin.InterfaceAdmin;
 import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -118,9 +118,12 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
-            System.out.println(Globals.getInstance().clientList.get(i).getGender());
+            //System.out.println(Globals.getInstance().clientList.get(i).getGender());
             if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
+                    
+                     Globals.instance.actualClient = Globals.getInstance().clientList.get(i);
+                    
                     InterfaceClient cliente = new InterfaceClient();
                     cliente.setVisible(true);
                     this.dispose();

@@ -13,6 +13,9 @@ public class Globals {
      public ArrayList<Admin> adminList = new ArrayList<>();
      public ArrayList<Service> servicesList = new ArrayList<>();
      public ArrayList<Attraction> attractionsList = new ArrayList<>();
+     
+     public static Client actualClient;
+     
     Globals() {
     
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface.IntarfaceClient;
+package IntarfaceClient;
 
 import Interface.Login;
 import globals.Globals;
@@ -36,6 +36,7 @@ public class InterfaceClient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Genero = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -60,15 +61,14 @@ public class InterfaceClient extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         TextFieldEmail = new javax.swing.JTextField();
         TextFieldPhoneNumber = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        RadioButtonMasculino = new javax.swing.JRadioButton();
-        RadioButtonFemenino = new javax.swing.JRadioButton();
         TextFieldCountry = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         TextFieldRePassword = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnEdit = new javax.swing.JButton();
+        BtnData = new javax.swing.JButton();
+        RadioButtonMasculino = new javax.swing.JRadioButton();
+        RadioButtonFemenino = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +76,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +89,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +102,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +122,6 @@ public class InterfaceClient extends javax.swing.JFrame {
         jLabel7.setText("Age");
 
         ComboBoxCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "colones", "dollars" }));
-        ComboBoxCurrency.setEnabled(false);
 
         jLabel4.setText("Password");
 
@@ -160,8 +159,27 @@ public class InterfaceClient extends javax.swing.JFrame {
 
         TextFieldPhoneNumber.setEnabled(false);
 
-        jLabel3.setText("Genero");
+        TextFieldCountry.setEnabled(false);
 
+        jLabel12.setText("PhoneNumber");
+
+        TextFieldRePassword.setEnabled(false);
+
+        BtnEdit.setText("Edit");
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+
+        BtnData.setText("Print data");
+        BtnData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataActionPerformed(evt);
+            }
+        });
+
+        Genero.add(RadioButtonMasculino);
         RadioButtonMasculino.setText("Male");
         RadioButtonMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -169,47 +187,15 @@ public class InterfaceClient extends javax.swing.JFrame {
             }
         });
 
-        RadioButtonFemenino.setSelected(true);
+        Genero.add(RadioButtonFemenino);
         RadioButtonFemenino.setText("Female");
-        RadioButtonFemenino.setEnabled(false);
         RadioButtonFemenino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RadioButtonFemeninoMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioButtonFemenino)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(RadioButtonMasculino, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioButtonMasculino)
-                    .addComponent(RadioButtonFemenino)
-                    .addComponent(jLabel3))
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
-
-        TextFieldCountry.setEnabled(false);
-
-        jLabel12.setText("PhoneNumber");
-
-        TextFieldRePassword.setEnabled(false);
-
-        jButton1.setText("Edit");
-
-        jButton2.setText("Print data");
+        jLabel3.setText("Genero");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,48 +204,56 @@ public class InterfaceClient extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(36, 36, 36)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(TextFieldEmail)
-                                    .addComponent(TextFieldPassword)
-                                    .addComponent(TextFieldRePassword)
-                                    .addComponent(TextFieldName)
-                                    .addComponent(TextFieldLastName)
-                                    .addComponent(TextFieldAge, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
-                        .addGap(58, 58, 58)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(36, 36, 36)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TextFieldPassword)
+                                .addComponent(TextFieldRePassword)
+                                .addComponent(TextFieldName)
+                                .addComponent(TextFieldLastName)
+                                .addComponent(TextFieldAge, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                            .addComponent(TextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11))
-                        .addGap(35, 35, 35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextFieldCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextFieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TextFieldCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextFieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jButtonSave)
-                .addGap(60, 60, 60)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(RadioButtonFemenino)
+                        .addGap(18, 18, 18)
+                        .addComponent(RadioButtonMasculino, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jButtonSave)
+                        .addGap(60, 60, 60)
+                        .addComponent(BtnEdit)))
                 .addGap(37, 37, 37)
-                .addComponent(jButton2)
+                .addComponent(BtnData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnBack)
                 .addGap(38, 38, 38))
@@ -305,14 +299,17 @@ public class InterfaceClient extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addComponent(TextFieldCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(TextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RadioButtonFemenino)
+                    .addComponent(RadioButtonMasculino)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSave)
                     .addComponent(BtnBack)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BtnEdit)
+                    .addComponent(BtnData))
                 .addGap(31, 31, 31))
         );
 
@@ -409,7 +406,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         else{
             gender = RadioButtonMasculino.getLabel();
         }
-
+/*
         for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
             if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
                 if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
@@ -424,7 +421,7 @@ public class InterfaceClient extends javax.swing.JFrame {
                 }
             }
         }
-
+*/
         int membershipnumber=3;
         Client newclient = new Client(name, lastName, gender, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
         Globals.getInstance().setUserList(newclient);
@@ -437,8 +434,11 @@ public class InterfaceClient extends javax.swing.JFrame {
         TextFieldRePassword.setText("");
         TextFieldAge.setText("");
         this.dispose();
-        Login nl = new Login();
-        nl.setVisible(true);
+        InterfaceClient it = new InterfaceClient();
+        it.setVisible(true);
+        
+       // Login nl = new Login();
+        //nl.setVisible(true);
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void RadioButtonMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioButtonMasculinoMouseClicked
@@ -448,6 +448,44 @@ public class InterfaceClient extends javax.swing.JFrame {
     private void RadioButtonFemeninoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioButtonFemeninoMouseClicked
 
     }//GEN-LAST:event_RadioButtonFemeninoMouseClicked
+
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        TextFieldEmail.enable();
+        TextFieldPassword.enable();
+        TextFieldRePassword.enable();
+        TextFieldName.enable();
+        TextFieldLastName.enable();
+        TextFieldAge.enable();
+        TextFieldPhoneNumber.enable();
+        TextFieldCountry.enable();
+        ComboBoxCurrency.enable();
+        RadioButtonFemenino.enable();
+        RadioButtonMasculino.enable();
+        
+    }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataActionPerformed
+         String male ="Male";
+        TextFieldEmail.setText(Globals.actualClient.getEmail());
+        
+        TextFieldPassword.setText(Globals.actualClient.getPassword());
+        TextFieldRePassword.setText(Globals.actualClient.getCheckPassword());
+        TextFieldName.setText(Globals.actualClient.getName());
+        TextFieldLastName.setText(Globals.actualClient.getLastName());
+        TextFieldAge.setText(String.valueOf(Globals.actualClient.getAge()));
+        TextFieldPhoneNumber.setText(String.valueOf(Globals.actualClient.getPhonenumber()));
+        TextFieldCountry.setText(Globals.actualClient.getCountry());
+        if(Globals.actualClient.getGender().equals(male)){
+            RadioButtonMasculino.isSelected();
+        }
+        else{
+            RadioButtonFemenino.isSelected();
+        }
+        /*
+        ComboBoxCurrency.setToolTipText("entry");
+        RadioButtonFemenino.isSelected();
+        */
+    }//GEN-LAST:event_BtnDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -487,7 +525,10 @@ public class InterfaceClient extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
+    private javax.swing.JButton BtnData;
+    private javax.swing.JButton BtnEdit;
     private javax.swing.JComboBox ComboBoxCurrency;
+    private javax.swing.ButtonGroup Genero;
     private javax.swing.JRadioButton RadioButtonFemenino;
     private javax.swing.JRadioButton RadioButtonMasculino;
     private javax.swing.JTextField TextFieldAge;
@@ -498,8 +539,6 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldPassword;
     private javax.swing.JTextField TextFieldPhoneNumber;
     private javax.swing.JTextField TextFieldRePassword;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -517,7 +556,6 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,7 +10,6 @@ public class Login extends javax.swing.JFrame {
     
     Globals newglobals = Globals.getInstance();
    
-   
     public Login() {
         initComponents();
         setLocationRelativeTo(null);

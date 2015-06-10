@@ -8,7 +8,7 @@ import progra2objetos.Attraction;
 import progra2objetos.Service;
 
 public class Globals {
-     public static Globals instance;
+     private static Globals instance;
      private ArrayList<Client> clientList =  new ArrayList<>();
      private ArrayList<Admin> adminList = new ArrayList<>();
      private ArrayList<Service> servicesList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Globals {
         return instance.servicesList;
     }
 
-    public void setServicesList(Service newService) {
+    public void setNewService(Service newService) {
         instance.servicesList.add(newService);
     }
 

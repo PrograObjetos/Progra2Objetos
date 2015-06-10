@@ -5,17 +5,24 @@
  */
 package InterfaceAdmin;
 
+import globals.Globals;
+import progra2objetos.Hotel;
+
 /**
  *
  * @author kevin
  */
 public class NewHotel extends javax.swing.JFrame {
-
+        Globals newGlobals = Globals.getInstance();
+        Hotel newHotel;
     /**
      * Creates new form NewHotel
      */
     public NewHotel() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Add New Hotel");
     }
 
     /**
@@ -201,8 +208,8 @@ public class NewHotel extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addGap(71, 71, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(jButton3)

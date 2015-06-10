@@ -6,13 +6,23 @@
 package InterfaceAdmin;
 
 import Interface.Login;
+import globals.Globals;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import progra2objetos.Service;
 
 /**
  *
  * @author kevin
  */
 public class InterfaceAdmin extends javax.swing.JFrame {
-
+        Service newService;
+        int code = 0;
+        Globals newGlobals = Globals.getInstance();
+        DefaultTableModel md;
+        String data[][]={};
+        String header[]={"Code","Service Name"};
+        
     /**
      * Creates new form InterfaceAdmin
      */
@@ -20,7 +30,34 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Interface Admin");
+        setTitle("Admin Options");
+        md = new DefaultTableModel(data,header);
+        jTableServices.setModel(md);
+    }
+    
+    public void resetRowValuesTableServices(){
+        for (int i = 0; i < jTableServices.getRowCount(); i++) {
+            md.removeRow(i);
+        }
+        
+    }
+    public void updateTableService(){
+        //resetRowValuesTableServices();
+        for (int i = 0; i < newGlobals.getServicesList().size(); i++) {
+            if(md.getValueAt(1, i+1).toString().equals(newGlobals.getServicesList().get(i).getServiceName()))
+                 return;
+            else{werqwerqqqqqqqqqqqqqqqqqqq
+                md.addRow( new Object[]{newGlobals.getServicesList().get(i).getCode(),
+                                                        newGlobals.getServicesList().get(i).getServiceName()} );
+            }
+        }
+        
+    }
+    
+    public void AddService(){
+        newService = new Service(code,jTextFieldServiceName.getText());
+        newGlobals.setNewService(newService);
+        code+=1;   
     }
 
     /**
@@ -39,6 +76,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHotels = new javax.swing.JTable();
         BtnBack = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableRoomTypes = new javax.swing.JTable();
@@ -75,6 +113,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButtonNewHotel.setText("Add New Hotel");
+        jButtonNewHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewHotelActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Delete Hotel");
 
@@ -98,6 +141,8 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("See Hotel");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,10 +154,12 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                         .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(355, 355, 355)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton2)
+                        .addGap(237, 237, 237)
                         .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +170,8 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jButtonNewHotel))
+                    .addComponent(jButtonNewHotel)
+                    .addComponent(jButton2))
                 .addGap(24, 24, 24))
         );
 
@@ -250,10 +298,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jTableServices.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Code", "Service Name"
@@ -268,6 +313,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jLabel2.setText("Service Name");
 
         jButtonAddService.setText("Add");
+        jButtonAddService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddServiceActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteService.setText("Delete Service");
 
@@ -424,6 +474,19 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddAttractionActionPerformed
 
+    private void jButtonNewHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewHotelActionPerformed
+       NewHotel newHotel = new NewHotel();
+       this.dispose();
+       newHotel.setVisible(true);
+    }//GEN-LAST:event_jButtonNewHotelActionPerformed
+
+    private void jButtonAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddServiceActionPerformed
+      AddService();
+     JOptionPane.showMessageDialog(this,"una vez");
+      updateTableService();
+
+    }//GEN-LAST:event_jButtonAddServiceActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,6 +525,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAddAttraction;
     private javax.swing.JButton jButtonAddSeason;
     private javax.swing.JButton jButtonAddService;

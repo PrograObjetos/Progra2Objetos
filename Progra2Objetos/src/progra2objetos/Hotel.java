@@ -15,7 +15,7 @@ public class Hotel {
     private ArrayList<Attraction> AttractionList;
     
     private Date timeCheckIn;
-    private Date timeCheckOu;
+    private Date timeCheckOut;
     private String requirementsCheckIn;
     private String services;
     private Date yearBuilt;
@@ -29,7 +29,7 @@ public class Hotel {
         this.typeAccommodation = typeAccommodation;
         this.sizeHotel = sizeHotel;
         this.timeCheckIn = timeCheckIn;
-        this.timeCheckOu = timeCheckOu;
+        this.timeCheckOut = timeCheckOu;
         this.requirementsCheckIn = requirementsCheckIn;
         this.services = services;
         this.yearBuilt = yearBuilt;
@@ -128,12 +128,12 @@ public class Hotel {
         this.timeCheckIn = timeCheckIn;
     }
 
-    public Date getTimeCheckOu() {
-        return timeCheckOu;
+    public Date getTimeCheckOut() {
+        return timeCheckOut;
     }
 
-    public void setTimeCheckOu(Date timeCheckOu) {
-        this.timeCheckOu = timeCheckOu;
+    public void setTimeCheckOut(Date timeCheckOut) {
+        this.timeCheckOut = timeCheckOut;
     }
 
     public String getRequirementsCheckIn() {

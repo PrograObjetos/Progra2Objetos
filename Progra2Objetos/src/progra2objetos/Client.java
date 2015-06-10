@@ -13,6 +13,7 @@ public class Client {
     private String country;
     private int phonenumber;
     private String Currency;
+    
 
     public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int membershipnumber, int age, String country, int phonenumber, String Currency) {
         this.name = name;

@@ -1,5 +1,6 @@
 package progra2objetos;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -8,16 +9,16 @@ public class Season {
     private int code;
     private Date startDate;
     private Date endDate;
-    private String roomTypes;
-    private int price;
+    private ArrayList<RoomType> roomTypes;
+    
 
-    public Season(String name, int code, Date startDate, Date endDate, String roomTypes, int price) {
+    public Season(String name, int code, Date startDate, Date endDate) {
         this.name = name;
         this.code = code;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.roomTypes = roomTypes;
-        this.price = price;
+        this.roomTypes = new ArrayList<>();
+        
     }
 
     public String getName() {
@@ -52,20 +53,6 @@ public class Season {
         this.endDate = endDate;
     }
 
-    public String getRoomTypes() {
-        return roomTypes;
-    }
-
-    public void setRoomTypes(String roomTypes) {
-        this.roomTypes = roomTypes;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+   
     
 }

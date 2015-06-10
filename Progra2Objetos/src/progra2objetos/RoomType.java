@@ -12,8 +12,9 @@ public class RoomType {
     private boolean allInclusive;
     private boolean smoke;
     private int roomSize;
+    private int price;
 
-    public RoomType(String bedding, int maximumPersons, String roomType, String description, boolean living, boolean terrace, boolean seaview, boolean allInclusive, boolean smoke, int roomSize) {
+    public RoomType(String bedding, int maximumPersons, String roomType, String description, boolean living, boolean terrace, boolean seaview, boolean allInclusive, boolean smoke, int roomSize,int price) {
         this.bedding = bedding;
         this.maximumPersons = maximumPersons;
         this.roomType = roomType;
@@ -24,6 +25,7 @@ public class RoomType {
         this.allInclusive = allInclusive;
         this.smoke = smoke;
         this.roomSize = roomSize;
+        this.price = price;
     }
 
     public String getBedding() {
@@ -105,6 +107,16 @@ public class RoomType {
     public void setRoomSize(int roomSize) {
         this.roomSize = roomSize;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    
 
     
 }

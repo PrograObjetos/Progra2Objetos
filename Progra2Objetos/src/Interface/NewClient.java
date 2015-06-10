@@ -8,6 +8,7 @@ import progra2objetos.Client;
 
 public class NewClient extends javax.swing.JFrame {
 
+     Globals newglobals = Globals.getInstance();
    
     public NewClient() {
         initComponents();
@@ -312,9 +313,9 @@ public class NewClient extends javax.swing.JFrame {
             gender = RadioButtonMasculino.getLabel();
         }
         
-        for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
-            if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
-                if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
+        for(int i = 0; i <  newglobals.getUserList().size(); i++){
+            if( newglobals.getUserList().get(i).getEmail().equals(email)){
+                if(newglobals.getUserList().get(i).getPassword().equals(encrip)){
                     JOptionPane.showMessageDialog(this,"Contact already registered");
                     TextFieldName.setText("");
                     TextFieldLastName.setText("");

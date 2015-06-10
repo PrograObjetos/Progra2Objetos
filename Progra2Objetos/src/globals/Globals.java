@@ -9,12 +9,14 @@ import progra2objetos.Service;
 
 public class Globals {
      public static Globals instance;
-     public ArrayList<Client> clientList =  new ArrayList<>();
-     public ArrayList<Admin> adminList = new ArrayList<>();
-     public ArrayList<Service> servicesList = new ArrayList<>();
-     public ArrayList<Attraction> attractionsList = new ArrayList<>();
+     private ArrayList<Client> clientList =  new ArrayList<>();
+     private ArrayList<Admin> adminList = new ArrayList<>();
+     private ArrayList<Service> servicesList = new ArrayList<>();
+     private ArrayList<Attraction> attractionsList = new ArrayList<>();
      
-     public static Client actualClient;
+     private Client actualClient;
+
+
      
     Globals() {
     
@@ -58,8 +60,11 @@ public class Globals {
         instance.attractionsList.add(newAttraction);
     }
     
-    
-             
-    
-     
+    public Client getActualClient() {
+        return actualClient;
+    }
+
+    public void setActualClient(Client actualClient) {
+        this.actualClient = actualClient;
+    }
 }

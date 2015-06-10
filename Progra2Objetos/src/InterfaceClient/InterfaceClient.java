@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntarfaceClient;
+package InterfaceClient;
 
 import Interface.Login;
+import Interface.NewClient;
 import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -17,6 +18,7 @@ import progra2objetos.Client;
  */
 public class InterfaceClient extends javax.swing.JFrame {
 
+       Globals newglobals = Globals.getInstance();
     /**
      * Creates new form InterfaceCliente
      */
@@ -422,10 +424,10 @@ public class InterfaceClient extends javax.swing.JFrame {
             }
         }
 */
-        int membershipnumber=3;
+        int membershipnumber=newglobals.getActualClient().getMembershipnumber();
         Client newclient = new Client(name, lastName, gender, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
-        Globals.getInstance().setUserList(newclient);
-        membershipnumber++;
+        newglobals.setActualClient(newclient);
+        
 
         TextFieldName.setText("");
         TextFieldLastName.setText("");
@@ -466,25 +468,30 @@ public class InterfaceClient extends javax.swing.JFrame {
 
     private void BtnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataActionPerformed
          String male ="Male";
-        TextFieldEmail.setText(Globals.actualClient.getEmail());
+        TextFieldEmail.setText(newglobals.getActualClient().getEmail());
         
-        TextFieldPassword.setText(Globals.actualClient.getPassword());
-        TextFieldRePassword.setText(Globals.actualClient.getCheckPassword());
-        TextFieldName.setText(Globals.actualClient.getName());
-        TextFieldLastName.setText(Globals.actualClient.getLastName());
-        TextFieldAge.setText(String.valueOf(Globals.actualClient.getAge()));
-        TextFieldPhoneNumber.setText(String.valueOf(Globals.actualClient.getPhonenumber()));
-        TextFieldCountry.setText(Globals.actualClient.getCountry());
-        if(Globals.actualClient.getGender().equals(male)){
-            RadioButtonMasculino.isSelected();
+        TextFieldPassword.setText(newglobals.getActualClient().getPassword());
+        TextFieldRePassword.setText(newglobals.getActualClient().getCheckPassword());
+        TextFieldName.setText(newglobals.getActualClient().getName());
+        TextFieldLastName.setText(newglobals.getActualClient().getLastName());
+        TextFieldAge.setText(String.valueOf(newglobals.getActualClient().getAge()));
+        TextFieldPhoneNumber.setText(String.valueOf(newglobals.getActualClient().getPhonenumber()));
+        TextFieldCountry.setText(newglobals.getActualClient().getCountry());
+        
+        if(newglobals.getActualClient().getCurrency().equals("colones")){
+            ComboBoxCurrency.setSelectedIndex(0);
+        }else{
+            ComboBoxCurrency.setSelectedIndex(1);
+        }
+        
+        
+        if(newglobals.getActualClient().getGender().equals(male)){
+            RadioButtonMasculino.setSelected(true);
         }
         else{
-            RadioButtonFemenino.isSelected();
+            RadioButtonFemenino.setSelected(true);
         }
-        /*
-        ComboBoxCurrency.setToolTipText("entry");
-        RadioButtonFemenino.isSelected();
-        */
+        
     }//GEN-LAST:event_BtnDataActionPerformed
 
     /**

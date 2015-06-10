@@ -1,12 +1,14 @@
 package Interface;
 
-import IntarfaceClient.InterfaceClient;
+import InterfaceClient.InterfaceClient;
 import InterfaceAdmin.InterfaceAdmin;
 import globals.Globals;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Login extends javax.swing.JFrame {
+    
+    Globals newglobals = Globals.getInstance();
    
    
     public Login() {
@@ -14,6 +16,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Login User");
+        
 
         
     }
@@ -117,12 +120,12 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Empty Password");
             return;
         }
-        for(int i = 0; i <  Globals.getInstance().clientList.size(); i++){
+        for(int i = 0; i <  newglobals.getUserList().size(); i++){
             //System.out.println(Globals.getInstance().clientList.get(i).getGender());
-            if( Globals.getInstance().clientList.get(i).getEmail().equals(email)){
-                if(Globals.getInstance().clientList.get(i).getPassword().equals(encrip)){
+            if( newglobals.getUserList().get(i).getEmail().equals(email)){
+                if(newglobals.getUserList().get(i).getPassword().equals(encrip)){
                     
-                     Globals.instance.actualClient = Globals.getInstance().clientList.get(i);
+                   newglobals.setActualClient(newglobals.getUserList().get(i));
                     
                     InterfaceClient cliente = new InterfaceClient();
                     cliente.setVisible(true);
@@ -132,9 +135,9 @@ public class Login extends javax.swing.JFrame {
             }
         }
         
-        for(int i = 0; i <  Globals.getInstance().adminList.size(); i++){
-            if( Globals.getInstance().adminList.get(i).getEmail().equals(email)){
-                if(Globals.getInstance().adminList.get(i).getPassWord().equals(encrip)){
+        for(int i = 0; i <  newglobals.getAdminList().size(); i++){
+            if( newglobals.getAdminList().get(i).getEmail().equals(email)){
+                if(newglobals.getAdminList().get(i).getPassWord().equals(encrip)){
                     InterfaceAdmin admin = new InterfaceAdmin();
                     admin.setVisible(true);
                     this.dispose();

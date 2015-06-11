@@ -22,7 +22,7 @@ public class NewHotel extends javax.swing.JFrame {
         DefaultListModel mdServices;
         DefaultListModel mdAttractions;
         DefaultListModel mdHotelAttractions;
-        DefaultListModel mdAHotelServices;
+        DefaultListModel mdHotelServices;
         
         
     /**
@@ -33,6 +33,12 @@ public class NewHotel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Add New Hotel");
+        mdHotelServices = new DefaultListModel();
+        jListHotelServices.setModel(mdHotelServices);
+        
+        mdHotelAttractions = new DefaultListModel();
+        jListHotelAttractions.setModel(mdHotelAttractions);
+        
         loadServices();
         loadAttractions();
     }
@@ -197,6 +203,11 @@ public class NewHotel extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jListAttractions);
 
         jButtonAddAttractio.setText("Add");
+        jButtonAddAttractio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddAttractioActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteAttraction.setText("Delete");
 
@@ -387,10 +398,17 @@ public class NewHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddServiceActionPerformed
+    
         
         String selectedValue = jListServices.getSelectedValue().toString();
+        mdHotelServices.addElement(selectedValue);
         
     }//GEN-LAST:event_jButtonAddServiceActionPerformed
+
+    private void jButtonAddAttractioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAttractioActionPerformed
+        String selectedValue = jListAttractions.getSelectedValue().toString();
+        mdHotelAttractions.addElement(selectedValue);
+    }//GEN-LAST:event_jButtonAddAttractioActionPerformed
 
     /**
      * @param args the command line arguments

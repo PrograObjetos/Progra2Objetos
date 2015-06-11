@@ -9,6 +9,7 @@ import Interface.Login;
 import globals.Globals;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import progra2objetos.Attraction;
 import progra2objetos.Service;
 
 /**
@@ -17,11 +18,15 @@ import progra2objetos.Service;
  */
 public class InterfaceAdmin extends javax.swing.JFrame {
         Service newService;
-        int code = 0;
+        Attraction newAttraction;
+        int code = 1;
+        int ID = 1;
         Globals newGlobals = Globals.getInstance();
-        DefaultTableModel md;
-        String data[][]={};
-        String header[]={"Code","Service Name"};
+        DefaultTableModel mdService;
+        DefaultTableModel mdAttraction;
+        
+        
+        
         
     /**
      * Creates new form InterfaceAdmin
@@ -31,27 +36,47 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Admin Options");
-        md = new DefaultTableModel(data,header);
-        jTableServices.setModel(md);
+        
+        
+        
+        //table Services--------------------------------------------------------
+        mdService = (DefaultTableModel)jTableServices.getModel();
+        jTableServices.setModel(mdService);
+        loadServices();
+        
+        //table Attractions-----------------------------------------------------
+        mdAttraction = (DefaultTableModel)jTableAttractions.getModel();
+        jTableAttractions.setModel(mdAttraction);
+        loadAttractions();
+        
+          
+        
     }
     
-    public void resetRowValuesTableServices(){
-        for (int i = 0; i < jTableServices.getRowCount(); i++) {
-            md.removeRow(i);
-        }
-        
-    }
-    public void updateTableService(){
-        //resetRowValuesTableServices();
+   //Services table-----------------------------------------------------------------------------------------------------
+    public void deleteService(String ServiceName){
         for (int i = 0; i < newGlobals.getServicesList().size(); i++) {
-            if(md.getValueAt(1, i+1).toString().equals(newGlobals.getServicesList().get(i).getServiceName()))
-                 return;
-            else{werqwerqqqqqqqqqqqqqqqqqqq
-                md.addRow( new Object[]{newGlobals.getServicesList().get(i).getCode(),
-                                                        newGlobals.getServicesList().get(i).getServiceName()} );
+            if(newGlobals.getServicesList().get(i).getServiceName().equals(ServiceName)){
+                newGlobals.getServicesList().remove(i);
             }
         }
-        
+    }
+    
+    public void loadServices(){
+        if(newGlobals.getServicesList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newGlobals.getServicesList().size(); i++) {
+                mdService.addRow( new Object[]{newGlobals.getServicesList().get(i).getCode() ,
+                    newGlobals.getServicesList().get(i).getServiceName()} ); 
+            }
+           
+            code = (newGlobals.getServicesList().get((newGlobals.getServicesList().size())-1).getCode())+1;
+        }   
+    }
+    
+    public void updateTableService(){
+           mdService.addRow( new Object[]{code-1 , jTextFieldServiceName.getText()} );   
     }
     
     public void AddService(){
@@ -59,6 +84,40 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         newGlobals.setNewService(newService);
         code+=1;   
     }
+    
+    //Attractions Table-------------------------------------------------------------------------------------------------------------
+    public void deleteAttraction(String AttractionName){
+        for (int i = 0; i < newGlobals.getAttractionsList().size(); i++) {
+            if(newGlobals.getAttractionsList().get(i).getAttractionName().equals(AttractionName)){
+                newGlobals.getAttractionsList().remove(i);
+            }
+        }
+    }
+    
+    public void loadAttractions(){
+        if(newGlobals.getAttractionsList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newGlobals.getAttractionsList().size(); i++) {
+                mdAttraction.addRow( new Object[]{newGlobals.getAttractionsList().get(i).getID(),
+                    newGlobals.getAttractionsList().get(i).getAttractionName()} ); 
+
+            }
+            System.out.println(newGlobals.getAttractionsList().size());
+            code = (newGlobals.getAttractionsList().get((newGlobals.getAttractionsList().size())-1).getID())+1;
+        }
+        
+    }
+    public void updateTableAttraction(){
+           mdAttraction.addRow( new Object[]{ID-1 , jTextFieldAttractionName.getText()} );   
+    }
+    
+    public void AddAttraction(){
+        newAttraction = new Attraction(ID,jTextFieldAttractionName.getText());
+        newGlobals.setNewAttraction(newAttraction);
+        ID+=1;   
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -320,6 +379,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         });
 
         jButtonDeleteService.setText("Delete Service");
+        jButtonDeleteService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteServiceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -372,10 +436,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jTableAttractions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "Attraction Name"
@@ -384,6 +445,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTableAttractions);
 
         jButtonDeleteAttraction.setText("Delete Attraction");
+        jButtonDeleteAttraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteAttractionActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Add new Attraction");
 
@@ -397,6 +463,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         });
 
         jButtonback3.setText("Back");
+        jButtonback3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonback3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -471,7 +542,15 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void jButtonAddAttractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAttractionActionPerformed
-        // TODO add your handling code here:
+        if(jTextFieldAttractionName.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"The Attraction Name can't be null");
+            return;
+        }
+            
+        AddAttraction();
+        updateTableAttraction();
+        jTextFieldAttractionName.setText(null);
+        
     }//GEN-LAST:event_jButtonAddAttractionActionPerformed
 
     private void jButtonNewHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewHotelActionPerformed
@@ -481,11 +560,52 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewHotelActionPerformed
 
     private void jButtonAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddServiceActionPerformed
-      AddService();
-     JOptionPane.showMessageDialog(this,"una vez");
+        if(jTextFieldServiceName.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"The Service Name can't be null");
+            return;
+        }
+        AddService();
       updateTableService();
+      jTextFieldServiceName.setText(null);
 
     }//GEN-LAST:event_jButtonAddServiceActionPerformed
+
+    private void jButtonDeleteAttractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAttractionActionPerformed
+        mdAttraction = (DefaultTableModel)jTableAttractions.getModel();
+        if(jTableAttractions.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Attraction to delete");
+            return;
+        }
+        
+        String AttractionName;
+        int TempSelectRow = jTableAttractions.getSelectedRow();
+        AttractionName = mdAttraction.getValueAt(TempSelectRow, 1).toString();
+        deleteAttraction(AttractionName);
+        mdAttraction.removeRow(jTableAttractions.getSelectedRow());
+        mdAttraction = null;
+    }//GEN-LAST:event_jButtonDeleteAttractionActionPerformed
+
+    private void jButtonDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteServiceActionPerformed
+        mdService = (DefaultTableModel)jTableServices.getModel();
+        if(jTableServices.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Service to delete");
+            return;
+        }
+        
+        
+        String ServiceName;
+        int TempSelectRow = jTableServices.getSelectedRow();
+        ServiceName = mdService.getValueAt(TempSelectRow, 1).toString();
+        deleteService(ServiceName);
+        mdService.removeRow(jTableServices.getSelectedRow());
+        mdService = null;
+    }//GEN-LAST:event_jButtonDeleteServiceActionPerformed
+
+    private void jButtonback3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonback3ActionPerformed
+        this.dispose();
+        InterfaceAdmin newI = new InterfaceAdmin();
+        newI.setVisible(true);
+    }//GEN-LAST:event_jButtonback3ActionPerformed
 
     /**
      * @param args the command line arguments

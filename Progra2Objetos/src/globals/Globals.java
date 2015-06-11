@@ -56,7 +56,7 @@ public class Globals {
         return instance.attractionsList;
     }
 
-    public void setAttractionsList(Attraction newAttraction) {
+    public void setNewAttraction(Attraction newAttraction) {
         instance.attractionsList.add(newAttraction);
     }
     

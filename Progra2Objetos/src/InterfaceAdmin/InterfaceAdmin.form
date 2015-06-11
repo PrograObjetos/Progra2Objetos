@@ -586,6 +586,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete Service"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteServiceActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -670,7 +673,7 @@
                 <Component class="javax.swing.JTable" name="jTableAttractions">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="4">
+                      <Table columnCount="2" rowCount="0">
                         <Column editable="true" title="ID" type="java.lang.Object"/>
                         <Column editable="true" title="Attraction Name" type="java.lang.Object"/>
                       </Table>
@@ -700,6 +703,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete Attraction"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteAttractionActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -725,6 +731,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Back"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonback3ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

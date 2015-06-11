@@ -15,12 +15,12 @@ public class Hotel {
     private ArrayList<Service> servicesList;
     private ArrayList<Attraction> AttractionList;
     
-    private Time timeCheckIn;
-    private Time timeCheckOut;
+    private String timeCheckIn;
+    private String timeCheckOut;
     private String requirementsCheckIn;
-    private Date yearBuilt;
+    private String yearBuilt;
 
-    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, Time timeCheckIn, Time timeCheckOu, String requirementsCheckIn, Date yearBuilt) {
+    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, String timeCheckIn, String timeCheckOu, String requirementsCheckIn, String yearBuilt) {
         this.name = name;
         this.address = address;
         this.country = country;
@@ -117,23 +117,22 @@ public class Hotel {
         this.sizeHotel = sizeHotel;
     }
 
-    public Time getTimeCheckIn() {
+    public String getTimeCheckIn() {
         return timeCheckIn;
     }
 
-    public void setTimeCheckIn(Time timeCheckIn) {
+    public void setTimeCheckIn(String timeCheckIn) {
         this.timeCheckIn = timeCheckIn;
     }
 
-    public Time getTimeCheckOut() {
+    public String getTimeCheckOut() {
         return timeCheckOut;
     }
 
-    public void setTimeCheckOut(Time timeCheckOut) {
+    public void setTimeCheckOut(String timeCheckOut) {
         this.timeCheckOut = timeCheckOut;
     }
-
-   
+  
     public String getRequirementsCheckIn() {
         return requirementsCheckIn;
     }
@@ -142,13 +141,15 @@ public class Hotel {
         this.requirementsCheckIn = requirementsCheckIn;
     }
 
-    public Date getYearBuilt() {
+    public String getYearBuilt() {
         return yearBuilt;
     }
 
-    public void setYearBuilt(Date yearBuilt) {
+    public void setYearBuilt(String yearBuilt) {
         this.yearBuilt = yearBuilt;
     }
+
+    
 
     
 }

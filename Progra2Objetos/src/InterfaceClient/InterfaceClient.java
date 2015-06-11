@@ -606,8 +606,7 @@ public class InterfaceClient extends javax.swing.JFrame {
     private void BtnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataActionPerformed
          String male ="Male";
         TextFieldEmail.setText(newglobals.getActualClient().getEmail());
-        
-        TextFieldPassword.setText(newglobals.getActualClient().getPassword());
+        TextFieldPassword.setText(newglobals.getActualClient().getCheckPassword());
         TextFieldRePassword.setText(newglobals.getActualClient().getCheckPassword());
         TextFieldName.setText(newglobals.getActualClient().getName());
         TextFieldLastName.setText(newglobals.getActualClient().getLastName());

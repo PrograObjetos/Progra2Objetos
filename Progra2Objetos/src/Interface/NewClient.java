@@ -329,7 +329,7 @@ public class NewClient extends javax.swing.JFrame {
         }
         
         int membershipnumber=3;
-        Client newclient = new Client(name, lastName, gender, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
+        Client newclient = new Client(name, lastName, gender, email, encrip, password, membershipnumber,age ,country,phonenumber,Currency);
         Globals.getInstance().setUserList(newclient);
         membershipnumber++;
              

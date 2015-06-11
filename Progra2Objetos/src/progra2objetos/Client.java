@@ -1,6 +1,8 @@
 
 package progra2objetos;
 
+import java.util.ArrayList;
+
 public class Client {
     private String name;
     private String lastName;
@@ -13,6 +15,7 @@ public class Client {
     private String country;
     private int phonenumber;
     private String Currency;
+    private ArrayList<Card> cardList;
     
 
     public Client(String name, String lastName, String gender, String email, String password, String checkPassword, int membershipnumber, int age, String country, int phonenumber, String Currency) {
@@ -27,6 +30,7 @@ public class Client {
         this.country = country;
         this.phonenumber = phonenumber;
         this.Currency = Currency;
+        this.cardList = new ArrayList<>();
     }
 
     public int getMembershipnumber() {
@@ -115,6 +119,15 @@ public class Client {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public ArrayList<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setNewCard(Card newcard) {
+        this.cardList.add(newcard);
+        
     }
 
  

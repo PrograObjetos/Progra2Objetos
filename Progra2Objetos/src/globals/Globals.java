@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import progra2objetos.Admin;
 import progra2objetos.Attraction;
 import progra2objetos.Hotel;
+import progra2objetos.RoomType;
 import progra2objetos.Service;
 
 public class Globals {
@@ -15,6 +16,7 @@ public class Globals {
      private ArrayList<Hotel> hotelsList = new ArrayList<>();
      private ArrayList<Service> servicesList = new ArrayList<>();
      private ArrayList<Attraction> attractionsList = new ArrayList<>();
+     private ArrayList<RoomType> RoomTypesList = new ArrayList<>();
      private Hotel actualHotel;
      private Client actualClient;
 
@@ -81,10 +83,22 @@ public class Globals {
     public ArrayList<Hotel> getHotelsList() {
         return instance.hotelsList;
     }
-
-    public void setNewHotel(Hotel newhotel) {
-        instance.hotelsList.add(newhotel);
+    public void setActualHotelNull(){
+        instance.actualHotel = null;
     }
+    
+    public void addHotel(){
+        instance.hotelsList.add(actualHotel);
+    }
+
+    public ArrayList<RoomType> getRoomTypesList() {
+        return instance.RoomTypesList;
+    }
+
+    public void setNewRoomType(RoomType newRoomType) {
+        instance.RoomTypesList.add(newRoomType);
+    }
+    
     
     
 }

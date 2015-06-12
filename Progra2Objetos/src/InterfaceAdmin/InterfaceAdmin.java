@@ -24,6 +24,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         Globals newGlobals = Globals.getInstance();
         DefaultTableModel mdService;
         DefaultTableModel mdAttraction;
+        DefaultTableModel mdRoomTypes;
         
         
         
@@ -37,7 +38,10 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Admin Options");
         
-        
+        //table Room Types------------------------------------------------------
+        mdRoomTypes = (DefaultTableModel)jTableRoomTypes.getModel();
+        jTableRoomTypes.setModel(mdRoomTypes);
+        loadRoomTypes();
         
         //table Services--------------------------------------------------------
         mdService = (DefaultTableModel)jTableServices.getModel();
@@ -52,6 +56,27 @@ public class InterfaceAdmin extends javax.swing.JFrame {
           
         
     }
+   //Room Types Table--------------------------------------------------------------------------------------------------
+    public void loadRoomTypes(){
+        if(newGlobals.getRoomTypesList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newGlobals.getRoomTypesList().size(); i++) {
+                mdRoomTypes.addRow( new Object[]{newGlobals.getRoomTypesList().get(i).getRoomType() ,
+                    newGlobals.getRoomTypesList().get(i).getDescription(),
+                    newGlobals.getRoomTypesList().get(i).getMaximumPersons(),
+                    newGlobals.getRoomTypesList().get(i).getBedding(),
+                    newGlobals.getRoomTypesList().get(i).getPrice(),
+                    newGlobals.getRoomTypesList().get(i).isAllInclusive(),
+                    newGlobals.getRoomTypesList().get(i).isLiving(),
+                    newGlobals.getRoomTypesList().get(i).isTerrace(),
+                    newGlobals.getRoomTypesList().get(i).isSeaview(),
+                    newGlobals.getRoomTypesList().get(i).isSmoke()} ); 
+            }
+        }  
+    }
+    
+    
     
    //Services table-----------------------------------------------------------------------------------------------------
     public void deleteService(String ServiceName){
@@ -103,7 +128,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                     newGlobals.getAttractionsList().get(i).getAttractionName()} ); 
 
             }
-            System.out.println(newGlobals.getAttractionsList().size());
             code = (newGlobals.getAttractionsList().get((newGlobals.getAttractionsList().size())-1).getID())+1;
         }
         
@@ -143,6 +167,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jButtonNewType = new javax.swing.JButton();
         jButtonDeleteType = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableSeasons = new javax.swing.JTable();
@@ -249,22 +274,26 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jTableRoomTypes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Room Type", "Description", "#Persons", "Bedding", "Living", "Terrace", "all-inclusive", "Seaview", "Smoke", "Price"
+                "Room Type", "Description", "#Persons", "Bedding", "Price", "all-inclusive", "Living", "Terrace", "Seaview", "Smoke"
             }
         ));
         jScrollPane2.setViewportView(jTableRoomTypes);
 
         jButtonNewType.setText("Add New Type");
+        jButtonNewType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewTypeActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteType.setText("Delete a Type");
 
         jButtonBack.setText("Back");
+
+        jButton4.setText("Seen Room Type");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -278,6 +307,8 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                         .addComponent(jButtonNewType)
                         .addGap(26, 26, 26)
                         .addComponent(jButtonDeleteType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonBack)))
                 .addGap(23, 23, 23))
@@ -291,7 +322,8 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBack)
                     .addComponent(jButtonNewType)
-                    .addComponent(jButtonDeleteType))
+                    .addComponent(jButtonDeleteType)
+                    .addComponent(jButton4))
                 .addGap(23, 23, 23))
         );
 
@@ -622,6 +654,12 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonNewTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTypeActionPerformed
+        NewRoomType newRoomTypeWindows = new NewRoomType();
+        this.dispose();
+        newRoomTypeWindows.setVisible(true);
+    }//GEN-LAST:event_jButtonNewTypeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -662,6 +700,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAddAttraction;
     private javax.swing.JButton jButtonAddSeason;
     private javax.swing.JButton jButtonAddService;

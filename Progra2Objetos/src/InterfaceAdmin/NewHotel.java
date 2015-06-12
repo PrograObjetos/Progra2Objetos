@@ -12,8 +12,11 @@ import javax.swing.JOptionPane;
 import progra2objetos.Hotel;
 import progra2objetos.Service;
 
+
 /**
- *
+ -------------------------------------------------------------------------
+ |intance global hotel puede generar conflicto al insertar un nuevo hotel|
+ -------------------------------------------------------------------------
  * @author kevin
  */
 public class NewHotel extends javax.swing.JFrame {
@@ -43,7 +46,6 @@ public class NewHotel extends javax.swing.JFrame {
         loadAttractions();
     }
     //Services----------------------------------------------------------------------------------------------------------
-    
     public void loadServices(){
         mdServices = new DefaultListModel();    
         jListServices.setModel(mdServices);
@@ -53,20 +55,40 @@ public class NewHotel extends javax.swing.JFrame {
     }
     
     public void addService(){
+        for (int i = 0; i < mdHotelServices.getSize(); i++) {
+            String serviceTemp = mdHotelServices.get(i).toString();
+            for (int j = 0; j < newGlobals.getServicesList().size(); j++) {
+                if(newGlobals.getServicesList().get(j).getServiceName().equals(serviceTemp)){
+                    newGlobals.getActualHotel().setNewService(newGlobals.getServicesList().get(j));
+                }
+            }
+        }
+        
+        
         
     }
     
-    //Attractions-------------------------------------------------------------------------------------------------------
+    //Attractions------------------------------------------------------------------------------------------------------
     public void loadAttractions(){
         mdAttractions = new DefaultListModel();    
         jListAttractions.setModel(mdAttractions);
         for (int i = 0; i < newGlobals.getAttractionsList().size(); i++) {
             mdAttractions.addElement(newGlobals.getAttractionsList().get(i).getAttractionName());
         }
+       
     }
     
     public void addAttraction(){
+        for (int i = 0; i < mdHotelAttractions.getSize(); i++) {
+            String serviceTemp = mdHotelAttractions.get(i).toString();
+            for (int j = 0; j < newGlobals.getAttractionsList().size(); j++) {
+                if(newGlobals.getAttractionsList().get(j).getAttractionName().equals(serviceTemp)){
+                    newGlobals.getActualHotel().setNewAttraction(newGlobals.getAttractionsList().get(j));
+                }
+            }
+        }
         
+
     }
     
     public void addHotel(){
@@ -80,17 +102,26 @@ public class NewHotel extends javax.swing.JFrame {
          String creationyear = jTextFieldCreationyear.getText(); 
          int phoneNumber;
          int stars;
+         stars = jComboBoxStars.getSelectedIndex()+1;
+         System.out.println(stars);
+         
          String hotelSize = jTextFieldSize.getText();
          try {
             phoneNumber = Integer.parseInt(jTextFieldPhoneNumber.getText());
-            stars = Integer.parseInt(jTextFieldStars.getText());
+            
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this,"Phone number and Stars only allow Number Values");
              return;
         }
          
          newHotel = new Hotel(name,address,country,phoneNumber,stars,typeAccommodation,hotelSize,checkIn,checkOut,checkInRequirements,creationyear);
-         newGlobals.setNewHotel(newHotel);
+         newGlobals.setActualHotel(newHotel);
+         //add services and Attractions
+         addService();
+         addAttraction();
+         newGlobals.addHotel();
+         newGlobals.setActualHotelNull();
+         
          JOptionPane.showMessageDialog(this,"successfully added");
          
          
@@ -116,7 +147,6 @@ public class NewHotel extends javax.swing.JFrame {
         jTextFieldAddress = new javax.swing.JTextField();
         jTextFieldCountry = new javax.swing.JTextField();
         jTextFieldPhoneNumber = new javax.swing.JTextField();
-        jTextFieldStars = new javax.swing.JTextField();
         jTextFieldTypeAccommodation = new javax.swing.JTextField();
         jTextFieldSize = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -147,12 +177,13 @@ public class NewHotel extends javax.swing.JFrame {
         jTextFieldCreationyear = new javax.swing.JTextField();
         jTextFieldCheckIn = new javax.swing.JTextField();
         jTextFieldCheckOut = new javax.swing.JTextField();
+        jComboBoxStars = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Name");
 
-        jLabel2.setText("address");
+        jLabel2.setText("Address");
 
         jLabel3.setText("Country");
 
@@ -193,6 +224,11 @@ public class NewHotel extends javax.swing.JFrame {
         });
 
         jButtonDeleteService.setText("Delete");
+        jButtonDeleteService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteServiceActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(jListHotelAttractions);
 
@@ -210,6 +246,11 @@ public class NewHotel extends javax.swing.JFrame {
         });
 
         jButtonDeleteAttraction.setText("Delete");
+        jButtonDeleteAttraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteAttractionActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Save Hotel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -229,8 +270,15 @@ public class NewHotel extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextAreaRequirements);
 
         jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Creation year");
+
+        jComboBoxStars.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,14 +302,14 @@ public class NewHotel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldSize, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(jTextFieldStars)
                             .addComponent(jTextFieldTypeAccommodation, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldPhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldCountry)
                             .addComponent(jTextFieldAddress)
                             .addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldCheckIn)
-                            .addComponent(jTextFieldCheckOut)))
+                            .addComponent(jTextFieldCheckOut)
+                            .addComponent(jComboBoxStars, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
@@ -334,7 +382,7 @@ public class NewHotel extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel5)
-                                    .addComponent(jTextFieldStars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jComboBoxStars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
@@ -367,7 +415,7 @@ public class NewHotel extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonDeleteAttraction))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 24, Short.MAX_VALUE)
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -390,7 +438,9 @@ public class NewHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTypeAccommodationActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        NewRooms newRoom = new NewRooms();
+        this.dispose();
+        newRoom.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -409,6 +459,34 @@ public class NewHotel extends javax.swing.JFrame {
         String selectedValue = jListAttractions.getSelectedValue().toString();
         mdHotelAttractions.addElement(selectedValue);
     }//GEN-LAST:event_jButtonAddAttractioActionPerformed
+
+    private void jButtonDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteServiceActionPerformed
+        if(jListHotelServices.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Please Select a Service in the Hotel Services list");
+            return;
+        }
+        
+        int selectedValue = jListHotelServices.getSelectedIndex();
+        mdHotelServices.removeElementAt(selectedValue);
+        jListHotelServices.setModel(mdHotelServices);
+    }//GEN-LAST:event_jButtonDeleteServiceActionPerformed
+
+    private void jButtonDeleteAttractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAttractionActionPerformed
+        if(jListHotelAttractions.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Please Select a Attraction in the Hotel Attractions list");
+            return;
+        }
+        
+        int selectedValue = jListHotelAttractions.getSelectedIndex();
+        mdHotelAttractions.removeElementAt(selectedValue);
+        jListHotelAttractions.setModel(mdHotelAttractions);
+    }//GEN-LAST:event_jButtonDeleteAttractionActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        InterfaceAdmin newWindows = new InterfaceAdmin();
+        this.dispose();
+        newWindows.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +531,7 @@ public class NewHotel extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddService;
     private javax.swing.JButton jButtonDeleteAttraction;
     private javax.swing.JButton jButtonDeleteService;
+    private javax.swing.JComboBox jComboBoxStars;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -486,7 +565,6 @@ public class NewHotel extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPhoneNumber;
     private javax.swing.JTextField jTextFieldSize;
-    private javax.swing.JTextField jTextFieldStars;
     private javax.swing.JTextField jTextFieldTypeAccommodation;
     // End of variables declaration//GEN-END:variables
 }

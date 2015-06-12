@@ -49,7 +49,7 @@ public class Hotel {
         return servicesList;
     }
 
-    public void setNewServices(Service newservice) {
+    public void setNewService(Service newservice) {
         this.servicesList.add(newservice);
     }
 

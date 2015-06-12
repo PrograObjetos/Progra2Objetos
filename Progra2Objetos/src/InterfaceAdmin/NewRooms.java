@@ -16,6 +16,9 @@ public class NewRooms extends javax.swing.JFrame {
      */
     public NewRooms() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Add Rooms");
     }
 
     /**

@@ -5,18 +5,73 @@
  */
 package InterfaceAdmin;
 
+import globals.Globals;
+import progra2objetos.RoomType;
+
 /**
  *
  * @author kevin
  */
 public class NewRoomType extends javax.swing.JFrame {
-
+        Globals newGlobals = Globals.getInstance();
+        RoomType newRoomType;
+        boolean allInclusive;
+        boolean terrace;
+        boolean seaview;
+        boolean smoke;
+        boolean livingRoom;
     /**
      * Creates new form NewRoomType
      */
     public NewRoomType() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Add New Room Type");
     }
+    
+     public void AddNewTypeRoom(){
+         String Bedding = jTextFieldBedding.getText();
+         
+         String roomType = jTextFieldRoomType.getText();
+         String description = jTextAreaDescription.getText();
+         
+        
+         try {
+             int price = Integer.parseInt(jTextFieldPrice.getText());
+             int roomSize = Integer.parseInt(jTextFieldRoomSize.getText());
+             int maxPersons = Integer.parseInt(jTextFieldMaxPersons.getText());
+             
+         } catch (Exception e) {
+             return;
+         }
+         if(jRadioButtonAllinclusive.isSelected()){  
+             allInclusive = true;
+             terrace = true;
+             seaview = true;
+             livingRoom = true;
+             smoke = true;
+             System.out.println("asfasdgfsadfghsdgsdfgdfg");
+             jRadioButtonSeaView.enable();
+             jRadioButtonSmoke.enable();
+             jRadioButtonTerrace.enable();
+             jRadioButtonlivingRoom.enable();  
+             
+         }else{
+             if(jRadioButtonlivingRoom.isSelected()){
+                 livingRoom = true;
+             }
+             if(jRadioButtonSeaView.isSelected()){
+                 seaview = true;
+             }
+             if (jRadioButtonSmoke.isSelected()) {
+                 smoke = true;
+             }
+             if(jRadioButtonTerrace.isSelected()){
+                 terrace = true;
+             }
+         } 
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,22 +85,23 @@ public class NewRoomType extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
         jTextFieldRoomType = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldBedding = new javax.swing.JTextField();
+        jTextFieldRoomSize = new javax.swing.JTextField();
+        jTextFieldMaxPersons = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldPrice = new javax.swing.JTextField();
+        jButtonSave = new javax.swing.JButton();
+        jRadioButtonAllinclusive = new javax.swing.JRadioButton();
+        jRadioButtonlivingRoom = new javax.swing.JRadioButton();
+        jRadioButtonSeaView = new javax.swing.JRadioButton();
+        jRadioButtonTerrace = new javax.swing.JRadioButton();
+        jRadioButtonSmoke = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,21 +110,6 @@ public class NewRoomType extends javax.swing.JFrame {
         jLabel2.setText("Description");
 
         jLabel3.setText("Maximun Persons");
-
-        jCheckBox1.setText("Living Room");
-
-        jCheckBox2.setText("Seaview");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox3.setText("Smoke");
-
-        jCheckBox4.setText("Terrace");
-
-        jCheckBox5.setText("Everything included");
 
         jTextAreaDescription.setColumns(20);
         jTextAreaDescription.setRows(5);
@@ -79,8 +120,35 @@ public class NewRoomType extends javax.swing.JFrame {
         jLabel5.setText("Bedding");
 
         jButton1.setText("back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Price");
+
+        jButtonSave.setText("Save");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonAllinclusive.setText("Everything included");
+        jRadioButtonAllinclusive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonAllinclusiveActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonlivingRoom.setText("Living Room");
+
+        jRadioButtonSeaView.setText("Seaview");
+
+        jRadioButtonTerrace.setText("Terrace");
+
+        jRadioButtonSmoke.setText("Smoke");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,42 +156,48 @@ public class NewRoomType extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(37, 37, 37)
-                        .addComponent(jTextField2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldMaxPersons))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(37, 37, 37)
+                                .addComponent(jTextFieldRoomSize))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonlivingRoom)
+                                    .addComponent(jRadioButtonSeaView))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonTerrace)
+                                    .addComponent(jRadioButtonSmoke)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(jTextFieldBedding)
+                                    .addComponent(jTextFieldPrice))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jCheckBox5)
+                            .addComponent(jButton1)
+                            .addComponent(jButtonSave))
+                        .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(24, 24, 24))
+                        .addComponent(jRadioButtonAllinclusive)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,34 +210,35 @@ public class NewRoomType extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldBedding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldRoomSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaxPersons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox5)
+                .addComponent(jRadioButtonAllinclusive)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox4))
+                    .addComponent(jButtonSave)
+                    .addComponent(jRadioButtonlivingRoom)
+                    .addComponent(jRadioButtonTerrace))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3))
+                            .addComponent(jRadioButtonSeaView)
+                            .addComponent(jRadioButtonSmoke))
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -173,9 +248,38 @@ public class NewRoomType extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        InterfaceAdmin newWindows = new InterfaceAdmin();
+        this.dispose();
+        newWindows.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        AddNewTypeRoom();
+    }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jRadioButtonAllinclusiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAllinclusiveActionPerformed
+        if(jRadioButtonAllinclusive.isSelected()){  
+             allInclusive = true;
+             terrace = true;
+             seaview = true;
+             livingRoom = true;
+             smoke = true;
+             System.out.println("asfasdgfsadfghsdgsdfgdfg");
+             jRadioButtonSeaView.enable();
+             jRadioButtonSmoke.enable();
+             jRadioButtonTerrace.enable();
+             jRadioButtonlivingRoom.enable();  
+             
+         }
+        else{  
+             jRadioButtonSeaView.enable(true);
+             jRadioButtonSmoke.enable(true);
+             jRadioButtonTerrace.enable(true);
+             jRadioButtonlivingRoom.enable(true);  
+             
+         }
+    }//GEN-LAST:event_jRadioButtonAllinclusiveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,23 +318,24 @@ public class NewRoomType extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButtonAllinclusive;
+    private javax.swing.JRadioButton jRadioButtonSeaView;
+    private javax.swing.JRadioButton jRadioButtonSmoke;
+    private javax.swing.JRadioButton jRadioButtonTerrace;
+    private javax.swing.JRadioButton jRadioButtonlivingRoom;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaDescription;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldBedding;
+    private javax.swing.JTextField jTextFieldMaxPersons;
+    private javax.swing.JTextField jTextFieldPrice;
+    private javax.swing.JTextField jTextFieldRoomSize;
     private javax.swing.JTextField jTextFieldRoomType;
     // End of variables declaration//GEN-END:variables
 }

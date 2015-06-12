@@ -60,13 +60,18 @@ public class InterfaceClient extends javax.swing.JFrame {
              }
          }
     }
+    
+    public static void reiniciarJTable(javax.swing.JTable Tabla){
+            DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+            while(modelo.getRowCount()>0)modelo.removeRow(0);
+        }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Genero = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        TableClient = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -88,7 +93,6 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCard = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         TextFieldPassword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -131,7 +135,7 @@ public class InterfaceClient extends javax.swing.JFrame {
             .addGap(0, 382, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Hotels", jPanel2);
+        TableClient.addTab("Hotels", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -144,7 +148,7 @@ public class InterfaceClient extends javax.swing.JFrame {
             .addGap(0, 382, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Reservations", jPanel3);
+        TableClient.addTab("Reservations", jPanel3);
 
         jLabel13.setText("Name");
 
@@ -239,7 +243,7 @@ public class InterfaceClient extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Card", jPanel4);
+        TableClient.addTab("Card", jPanel4);
 
         TableCard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -251,37 +255,20 @@ public class InterfaceClient extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TableCard);
 
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 191, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("View Cards", jPanel5);
+        TableClient.addTab("View Cards", jPanel5);
 
         TextFieldPassword.setEnabled(false);
 
@@ -475,17 +462,17 @@ public class InterfaceClient extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        jTabbedPane1.addTab("Profile", jPanel1);
+        TableClient.addTab("Profile", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(TableClient)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+            .addComponent(TableClient, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
         );
 
         pack();
@@ -672,6 +659,15 @@ public class InterfaceClient extends javax.swing.JFrame {
         Card newcard = new Card(nameTitularCard, lastNameTitular, typeCard, cardNumber, segurityCode, null);
         newglobals.getActualClient().setNewCard(newcard);
         
+        txtNameTitularCard.setText("");
+        txtTitularLastName.setText("");
+        txtCardNumber.setText("");
+        txtdateExpirationDate.setText("");
+        txtAddCard.setText("");
+        txtSecuriryCodeCard.setText("");
+        
+      
+        reiniciarJTable(TableCard);
         loadCard();
         
         
@@ -687,12 +683,6 @@ public class InterfaceClient extends javax.swing.JFrame {
         
         ComboBoxTypeCard.addItem(txtAddCard.getText());
     }//GEN-LAST:event_BtnAddTypeCardActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        InterfaceClient it = new InterfaceClient();
-        it.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     
@@ -742,6 +732,7 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JRadioButton RadioButtonFemenino;
     private javax.swing.JRadioButton RadioButtonMasculino;
     private javax.swing.JTable TableCard;
+    private javax.swing.JTabbedPane TableClient;
     private javax.swing.JTextField TextFieldAge;
     private javax.swing.JTextField TextFieldCountry;
     private javax.swing.JTextField TextFieldEmail;
@@ -750,7 +741,6 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldPassword;
     private javax.swing.JTextField TextFieldPhoneNumber;
     private javax.swing.JTextField TextFieldRePassword;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -775,7 +765,6 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField txtAddCard;
     private javax.swing.JTextField txtCardNumber;
     private javax.swing.JTextField txtNameTitularCard;

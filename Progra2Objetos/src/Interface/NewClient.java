@@ -1,6 +1,7 @@
 package Interface;
 
 import globals.Globals;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 import progra2objetos.Client;
@@ -13,6 +14,7 @@ public class NewClient extends javax.swing.JFrame {
     public NewClient() {
         initComponents();
         setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.DARK_GRAY);
         setResizable(false);
         setTitle("New client");
     }
@@ -51,6 +53,7 @@ public class NewClient extends javax.swing.JFrame {
         TextFieldPhoneNumber = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(getBackground());
 
         jButtonSave.setText("Save");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -59,16 +62,22 @@ public class NewClient extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Email");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Last Name");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("RePassword");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Age");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("User Infomation");
 
         BtnBack.setText("Back");
@@ -78,13 +87,21 @@ public class NewClient extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Personal information");
 
-        jLabel3.setText("Genero");
+        jPanel1.setBackground(java.awt.Color.darkGray);
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Gender");
+
+        RadioButtonMasculino.setBackground(java.awt.Color.darkGray);
         Genero.add(RadioButtonMasculino);
+        RadioButtonMasculino.setForeground(new java.awt.Color(255, 255, 255));
         RadioButtonMasculino.setText("Male");
         RadioButtonMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,7 +109,9 @@ public class NewClient extends javax.swing.JFrame {
             }
         });
 
+        RadioButtonFemenino.setBackground(java.awt.Color.darkGray);
         Genero.add(RadioButtonFemenino);
+        RadioButtonFemenino.setForeground(new java.awt.Color(255, 255, 255));
         RadioButtonFemenino.setSelected(true);
         RadioButtonFemenino.setText("Female");
         RadioButtonFemenino.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,10 +145,13 @@ public class NewClient extends javax.swing.JFrame {
 
         ComboBoxCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "colones", "dollars" }));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Corrency ");
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Country");
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("PhoneNumber");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -8,7 +8,7 @@ public class Progra2Objetos {
     
     public static void main(String[] args) {
         
-        Admin nA = new Admin("admin@gmail.com","21232f297a57a5a743894a0e4a801fc3","21232f297a57a5a743894a0e4a801fc3","admin");
+        Admin nA = new Admin("admin","21232f297a57a5a743894a0e4a801fc3","21232f297a57a5a743894a0e4a801fc3","admin");
        
                 
         

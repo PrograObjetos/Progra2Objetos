@@ -613,6 +613,16 @@ public class InterfaceClient extends javax.swing.JFrame {
 
         int membershipnumber=newglobals.getActualClient().getMembershipnumber();
         Client newclient = new Client(name, lastName, gender, email, encrip, checkPassword, membershipnumber,age ,country,phonenumber,Currency);
+        
+        for(int i = 0; i <  newglobals.getUserList().size(); i++){
+            if( newglobals.getUserList().get(i).getMembershipnumber()== membershipnumber){
+                newglobals.getUserList().set(i, newclient);                      
+            }
+            
+        }
+        
+        
+        
         newglobals.setActualClient(newclient);
         
 

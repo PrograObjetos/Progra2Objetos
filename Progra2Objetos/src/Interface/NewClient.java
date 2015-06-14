@@ -1,5 +1,7 @@
 package Interface;
 
+import Exeptions.CustomExeption;
+import Exeptions.ValidateExeption;
 import globals.Globals;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -277,6 +279,19 @@ public class NewClient extends javax.swing.JFrame {
         String Currency = ComboBoxCurrency.getSelectedItem().toString();
         int phonenumber;
         String gender;
+        
+                ValidateExeption v = new ValidateExeption();
+        
+        try {
+            v.Exeption(password);
+            
+        } catch (CustomExeption e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+            TextFieldPassword.setText("");
+            TextFieldRePassword.setText("");
+            return;
+        }
+        
         
                
         if(!password.equals(checkPassword)){

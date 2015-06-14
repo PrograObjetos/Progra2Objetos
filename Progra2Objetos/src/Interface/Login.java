@@ -1,5 +1,7 @@
 package Interface;
 
+import Exeptions.CustomExeption;
+import Exeptions.ValidateExeption;
 import InterfaceClient.InterfaceClient;
 import InterfaceAdmin.InterfaceAdmin;
 import globals.Globals;
@@ -111,13 +113,15 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnRegisterActionPerformed
 
+
+    
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
       
        String email = TextFieldUser.getText();
        String pass = new String(PasswordField.getPassword());
        String encrip = DigestUtils.md5Hex(pass);
        
-        
+
         if(email.equals("")){
             JOptionPane.showMessageDialog(this,"Empty name");
             return;

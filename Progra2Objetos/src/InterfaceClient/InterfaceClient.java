@@ -48,16 +48,19 @@ public class InterfaceClient extends javax.swing.JFrame {
     }
     
     public void loadCard(){
+        GregorianCalendar tempdate = new GregorianCalendar();
+        
          if(newglobals.getActualClient().getCardList().isEmpty()){
              return;
          }
          else{
              for (int i = 0; i < newglobals.getActualClient().getCardList().size(); i++) {
+                 tempdate.setTime(newglobals.getActualClient().getCardList().get(i).getExpirationDate());               
                  mdCard.addRow(new Object[]{newglobals.getActualClient().getCardList().get(i).getName(),
                      newglobals.getActualClient().getCardList().get(i).getLastName(),
                      newglobals.getActualClient().getCardList().get(i).getType(),
-                     newglobals.getActualClient().getCardList().get(i).getCardNumber(),
-                     newglobals.getActualClient().getCardList().get(i).getExpirationDate()});
+                     newglobals.getActualClient().getCardList().get(i).getCardNumber(),Integer.toString(tempdate.get(1))+" / "+
+                             Integer.toString(tempdate.get(2))+" / "+ Integer.toString(tempdate.get(5))});
              }
          }
     }
@@ -86,11 +89,16 @@ public class InterfaceClient extends javax.swing.JFrame {
         txtTitularLastName = new javax.swing.JTextField();
         txtCardNumber = new javax.swing.JTextField();
         txtSecuriryCodeCard = new javax.swing.JPasswordField();
-        txtdateExpirationDate = new javax.swing.JTextField();
         ComboBoxTypeCard = new javax.swing.JComboBox();
         BtnAddTypeCard = new javax.swing.JButton();
         txtAddCard = new javax.swing.JTextField();
         BtnAddCard = new javax.swing.JButton();
+        ComboBoxDia = new javax.swing.JComboBox();
+        ComboBoxMes = new javax.swing.JComboBox();
+        ComboBoxAno = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCard = new javax.swing.JTable();
@@ -135,7 +143,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 787, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +159,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 787, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +206,22 @@ public class InterfaceClient extends javax.swing.JFrame {
             }
         });
 
+        ComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        ComboBoxDia.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        ComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        ComboBoxAno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }));
+
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Día");
+
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Mes");
+
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Año");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -214,19 +238,35 @@ public class InterfaceClient extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnAddCard)
+                    .addComponent(ComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNameTitularCard)
-                            .addComponent(txtTitularLastName)
-                            .addComponent(txtCardNumber)
-                            .addComponent(txtSecuriryCodeCard)
-                            .addComponent(txtdateExpirationDate)
-                            .addComponent(ComboBoxTypeCard, 0, 214, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNameTitularCard, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTitularLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCardNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSecuriryCodeCard, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ComboBoxTypeCard, javax.swing.GroupLayout.Alignment.LEADING, 0, 214, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addGap(11, 11, 11)))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(ComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addGap(10, 10, 10)))))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtnAddTypeCard)
                             .addComponent(txtAddCard, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,13 +294,27 @@ public class InterfaceClient extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(txtSecuriryCodeCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtdateExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(BtnAddCard)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel20))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel19))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel21)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(ComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(BtnAddCard)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         TableClient.addTab("Card", jPanel4);
@@ -284,7 +338,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,7 +493,7 @@ public class InterfaceClient extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel9)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -525,7 +579,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TableClient)
+            .addComponent(TableClient, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -691,9 +745,10 @@ public class InterfaceClient extends javax.swing.JFrame {
         int cardNumber;
         int segurityCode;
         GregorianCalendar date = new GregorianCalendar();
-        date.set(WIDTH, WIDTH, WIDTH);
-        
-        
+        int ano = Integer.parseInt(ComboBoxAno.getSelectedItem().toString());
+        int mes = Integer.parseInt(ComboBoxMes.getSelectedItem().toString());
+        int dia = Integer.parseInt(ComboBoxDia.getSelectedItem().toString());
+        date.set(ano, mes, dia);     
         
         if(nameTitularCard.equals("")){
             JOptionPane.showMessageDialog(this,"Empty name");
@@ -723,13 +778,12 @@ public class InterfaceClient extends javax.swing.JFrame {
             return;
         }
         
-        Card newcard = new Card(nameTitularCard, lastNameTitular, typeCard, cardNumber, segurityCode, null);
+        Card newcard = new Card(nameTitularCard, lastNameTitular, typeCard, cardNumber, segurityCode, date.getTime());
         newglobals.getActualClient().setNewCard(newcard);
         
         txtNameTitularCard.setText("");
         txtTitularLastName.setText("");
         txtCardNumber.setText("");
-        txtdateExpirationDate.setText("");
         txtAddCard.setText("");
         txtSecuriryCodeCard.setText("");
         
@@ -793,7 +847,10 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JButton BtnData;
     private javax.swing.JButton BtnEdit;
     private javax.swing.JButton BtnProfile;
+    private javax.swing.JComboBox ComboBoxAno;
     private javax.swing.JComboBox ComboBoxCurrency;
+    private javax.swing.JComboBox ComboBoxDia;
+    private javax.swing.JComboBox ComboBoxMes;
     private javax.swing.JComboBox ComboBoxTypeCard;
     private javax.swing.ButtonGroup Genero;
     private javax.swing.JRadioButton RadioButtonFemenino;
@@ -818,7 +875,10 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -837,6 +897,5 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JTextField txtNameTitularCard;
     private javax.swing.JPasswordField txtSecuriryCodeCard;
     private javax.swing.JTextField txtTitularLastName;
-    private javax.swing.JTextField txtdateExpirationDate;
     // End of variables declaration//GEN-END:variables
 }

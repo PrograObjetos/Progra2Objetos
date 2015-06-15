@@ -3,7 +3,7 @@ package progra2objetos;
 import java.util.ArrayList;
 
 public class Room {
-    private String roomnumber; 
+    private int roomnumber; 
     private String flat;
     private String costumername;
     private String costumerLastname;
@@ -13,7 +13,7 @@ public class Room {
     private ArrayList<TimeTable> historyReservation;
     private TimeTable currentReservation;
 
-    public Room(String roomnumber, String flat, String costumername, String costumerLastname, int adultsQuantity, int childrenQuantity, RoomType roomType, ArrayList<TimeTable> historyReservation, TimeTable currentReservation) {
+    public Room(int roomnumber, String flat, String costumername, String costumerLastname, int adultsQuantity, int childrenQuantity, RoomType roomType) {
         this.roomnumber = roomnumber;
         this.flat = flat;
         this.costumername = costumername;
@@ -21,15 +21,15 @@ public class Room {
         this.adultsQuantity = adultsQuantity;
         this.childrenQuantity = childrenQuantity;
         this.roomType = roomType;
-        this.historyReservation = historyReservation;
-        this.currentReservation = currentReservation;
+        this.historyReservation = new ArrayList();
+        this.currentReservation = new TimeTable();
     }
 
-    public String getRoomnumber() {
+    public int getRoomnumber() {
         return roomnumber;
     }
 
-    public void setRoomnumber(String roomnumber) {
+    public void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
     }
 

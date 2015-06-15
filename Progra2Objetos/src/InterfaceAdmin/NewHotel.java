@@ -123,9 +123,9 @@ public class NewHotel extends javax.swing.JFrame {
          addService();
          addAttraction();
          newGlobals.addHotel();
-         newGlobals.setActualHotelNull();
+        
          
-         JOptionPane.showMessageDialog(this,"successfully added");
+         
          
          
     }
@@ -248,7 +248,7 @@ public class NewHotel extends javax.swing.JFrame {
             }
         });
 
-        jListHotelAttractions.setForeground(new java.awt.Color(255, 255, 255));
+        jListHotelAttractions.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane3.setViewportView(jListHotelAttractions);
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,6 +310,7 @@ public class NewHotel extends javax.swing.JFrame {
         jComboBoxStars.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", " " }));
         jComboBoxStars.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Description");
 
         jTextAreaDescription.setColumns(20);
@@ -480,26 +481,37 @@ public class NewHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTypeAccommodationActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NewRooms newRoom = new NewRooms();
+        addHotel();
+        if(newGlobals.getRoomTypesList().isEmpty()){
+            JOptionPane.showMessageDialog(this,"You need add a RoomType");
+            InterfaceAdmin windows = new InterfaceAdmin();
+            this.dispose();
+            windows.setVisible(true);
+            
+        }else{
+        newGlobals.setActualHotel(newHotel);
+        NewRooms newRoomtemp = new NewRooms();
         this.dispose();
-        newRoom.setVisible(true);
+        newRoomtemp.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addHotel();
+        newGlobals.setActualHotelNull();
+        JOptionPane.showMessageDialog(this,"successfully added");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddServiceActionPerformed
-    
-        
-        String selectedValue = jListServices.getSelectedValue().toString();
-        mdHotelServices.addElement(selectedValue);
+        String selectedValueS = jListServices.getSelectedValue().toString();
+        mdHotelServices.addElement(selectedValueS);
         
     }//GEN-LAST:event_jButtonAddServiceActionPerformed
 
     private void jButtonAddAttractioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAttractioActionPerformed
-        String selectedValue = jListAttractions.getSelectedValue().toString();
-        mdHotelAttractions.addElement(selectedValue);
+        String selectedValueA = jListAttractions.getSelectedValue().toString();
+        System.out.println(selectedValueA);
+        mdHotelAttractions.addElement(selectedValueA);
     }//GEN-LAST:event_jButtonAddAttractioActionPerformed
 
     private void jButtonDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteServiceActionPerformed

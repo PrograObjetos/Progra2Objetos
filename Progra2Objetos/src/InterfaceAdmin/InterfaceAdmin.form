@@ -68,9 +68,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jButtonNewHotel" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
                       <Component id="BtnBack" min="-2" pref="69" max="-2" attributes="0"/>
@@ -122,6 +122,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -147,7 +150,7 @@
                       <Table columnCount="12" rowCount="0">
                         <Column editable="true" title="Name" type="java.lang.Object"/>
                         <Column editable="true" title="Phone Number" type="java.lang.Object"/>
-                        <Column editable="true" title="Descripcion" type="java.lang.Object"/>
+                        <Column editable="true" title="Description" type="java.lang.Object"/>
                         <Column editable="true" title="Stars" type="java.lang.Object"/>
                         <Column editable="true" title="address" type="java.lang.Object"/>
                         <Column editable="true" title="Country" type="java.lang.Object"/>

@@ -20,6 +20,10 @@ public class TimeTable {
         this.endDate = endDate;
     }
 
+    TimeTable() {
+        
+    }
+
     public Date getStartDate() {
         return startDate;
     }

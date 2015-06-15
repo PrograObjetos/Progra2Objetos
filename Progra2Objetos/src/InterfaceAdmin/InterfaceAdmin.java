@@ -84,6 +84,14 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void deleteHotel(String HotelName){
+        for (int i = 0; i < newGlobals.getHotelsList().size(); i++) {
+            if(newGlobals.getHotelsList().get(i).getName().equals(HotelName)){
+                newGlobals.getHotelsList().remove(i);
+            }
+        }
+    }
    //Room Types Table--------------------------------------------------------------------------------------------------
     public void loadRoomTypes(){
         if(newGlobals.getRoomTypesList().isEmpty()){
@@ -239,6 +247,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jButton1.setText("Delete Hotel");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTableHotels.setBackground(new java.awt.Color(51, 51, 51));
         jTableHotels.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -248,7 +261,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Phone Number", "Descripcion", "Stars", "address", "Country", "Type Accommodation", "Size Hotel", "Check in Time", "Check out Time", "Requirements check in", "Year Built"
+                "Name", "Phone Number", "Description", "Stars", "address", "Country", "Type Accommodation", "Size Hotel", "Check in Time", "Check out Time", "Requirements check in", "Year Built"
             }
         ));
         jScrollPane1.setViewportView(jTableHotels);
@@ -271,9 +284,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(46, 46, 46)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(75, 75, 75)
                 .addComponent(jButton2)
                 .addGap(236, 236, 236)
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -658,6 +671,12 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddAttractionActionPerformed
 
     private void jButtonNewHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewHotelActionPerformed
+       if(newGlobals.getRoomTypesList().isEmpty()){
+            JOptionPane.showMessageDialog(this,"You need add a RoomType");
+            return;
+            
+        }
+        
        NewHotel newHotel = new NewHotel();
        this.dispose();
        newHotel.setVisible(true);
@@ -716,6 +735,22 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         this.dispose();
         newRoomTypeWindows.setVisible(true);
     }//GEN-LAST:event_jButtonNewTypeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mdHotels = (DefaultTableModel)jTableHotels.getModel();
+        if(jTableHotels.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Hotel to delete");
+            return;
+        }
+        
+        
+        String HotelName;
+        int TempSelectRow = jTableHotels.getSelectedRow();
+        HotelName = mdHotels.getValueAt(TempSelectRow, 0).toString();
+        deleteHotel(HotelName);
+        mdHotels.removeRow(jTableHotels.getSelectedRow());
+        mdHotels = null;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

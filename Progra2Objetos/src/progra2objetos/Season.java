@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Season {
+public abstract class Season {
     private String name;
     private int code;
     private Date startDate;

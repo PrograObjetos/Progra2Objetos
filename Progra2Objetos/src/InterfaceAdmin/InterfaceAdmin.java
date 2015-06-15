@@ -112,6 +112,16 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         }  
     }
     
+    public void deleteRoomType(String RoomtypeName){
+        for (int i = 0; i < newGlobals.getRoomTypesList().size(); i++) {
+            if(newGlobals.getRoomTypesList().get(i).getRoomType().equals(RoomtypeName)){
+                newGlobals.getRoomTypesList().remove(i);
+            }
+        }
+    }
+    
+    
+    
     
     
    //Services table-----------------------------------------------------------------------------------------------------
@@ -164,7 +174,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                     newGlobals.getAttractionsList().get(i).getAttractionName()} ); 
 
             }
-            code = (newGlobals.getAttractionsList().get((newGlobals.getAttractionsList().size())-1).getID())+1;
+            ID = (newGlobals.getAttractionsList().get((newGlobals.getAttractionsList().size())-1).getID())+1;
         }
         
     }
@@ -195,14 +205,12 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHotels = new javax.swing.JTable();
         BtnBack = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableRoomTypes = new javax.swing.JTable();
         jButtonNewType = new javax.swing.JButton();
         jButtonDeleteType = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableSeasons = new javax.swing.JTable();
@@ -274,9 +282,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("See Hotel");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -286,9 +291,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(jButton2)
-                .addGap(236, 236, 236)
+                .addGap(361, 361, 361)
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -304,7 +307,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNewHotel)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
@@ -336,12 +338,14 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jButtonDeleteType.setText("Delete a Type");
         jButtonDeleteType.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonDeleteType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteTypeActionPerformed(evt);
+            }
+        });
 
         jButtonBack.setText("Back");
         jButtonBack.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton4.setText("Seen Room Type");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -349,29 +353,28 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jButtonNewType)
                         .addGap(26, 26, 26)
                         .addComponent(jButtonDeleteType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonBack)))
-                .addGap(23, 23, 23))
+                        .addComponent(jButtonBack)
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
+                        .addGap(48, 48, 48))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBack)
                     .addComponent(jButtonNewType)
-                    .addComponent(jButtonDeleteType)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonDeleteType))
                 .addGap(23, 23, 23))
         );
 
@@ -705,7 +708,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         AttractionName = mdAttraction.getValueAt(TempSelectRow, 1).toString();
         deleteAttraction(AttractionName);
         mdAttraction.removeRow(jTableAttractions.getSelectedRow());
-        mdAttraction = null;
+    
     }//GEN-LAST:event_jButtonDeleteAttractionActionPerformed
 
     private void jButtonDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteServiceActionPerformed
@@ -721,7 +724,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         ServiceName = mdService.getValueAt(TempSelectRow, 1).toString();
         deleteService(ServiceName);
         mdService.removeRow(jTableServices.getSelectedRow());
-        mdService = null;
+       
     }//GEN-LAST:event_jButtonDeleteServiceActionPerformed
 
     private void jButtonback3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonback3ActionPerformed
@@ -749,8 +752,23 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         HotelName = mdHotels.getValueAt(TempSelectRow, 0).toString();
         deleteHotel(HotelName);
         mdHotels.removeRow(jTableHotels.getSelectedRow());
-        mdHotels = null;
+       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonDeleteTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTypeActionPerformed
+        mdRoomTypes = (DefaultTableModel)jTableRoomTypes.getModel();
+        if(jTableRoomTypes.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Room Type to delete");
+            return;
+        }
+        
+        
+        String RoomtypeName;
+        int TempSelectRow = jTableRoomTypes.getSelectedRow();
+        RoomtypeName = mdRoomTypes.getValueAt(TempSelectRow, 0).toString();
+        deleteRoomType(RoomtypeName);
+        mdRoomTypes.removeRow(jTableRoomTypes.getSelectedRow());
+    }//GEN-LAST:event_jButtonDeleteTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -790,8 +808,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAddAttraction;
     private javax.swing.JButton jButtonAddSeason;
     private javax.swing.JButton jButtonAddService;

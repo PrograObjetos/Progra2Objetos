@@ -7,6 +7,7 @@ import progra2objetos.Admin;
 import progra2objetos.Attraction;
 import progra2objetos.Hotel;
 import progra2objetos.RoomType;
+import progra2objetos.Season;
 import progra2objetos.Service;
 
 public class Globals {
@@ -17,6 +18,7 @@ public class Globals {
      private ArrayList<Service> servicesList = new ArrayList<>();
      private ArrayList<Attraction> attractionsList = new ArrayList<>();
      private ArrayList<RoomType> RoomTypesList = new ArrayList<>();
+     private ArrayList<Season> SeasonsList = new ArrayList<>();
      private Hotel actualHotel;
      private Client actualClient;
 
@@ -101,6 +103,14 @@ public class Globals {
 
     public void setNewRoomType(RoomType newRoomType) {
         instance.RoomTypesList.add(newRoomType);
+    }
+
+    public ArrayList<Season> getSeasonsList() {
+        return instance.SeasonsList;
+    }
+
+    public void setNewSeasons(Season newSeasons) {
+        instance.SeasonsList.add(newSeasons);
     }
     
     

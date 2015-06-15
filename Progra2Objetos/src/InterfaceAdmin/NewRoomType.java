@@ -7,6 +7,7 @@ package InterfaceAdmin;
 
 import globals.Globals;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import progra2objetos.RoomType;
 
 /**
@@ -37,42 +38,24 @@ public class NewRoomType extends javax.swing.JFrame {
          
          String roomType = jTextFieldRoomType.getText();
          String description = jTextAreaDescription.getText();
-         
+         int price;
+         int roomSize;
+         int maxPersons;
         
          try {
-             int price = Integer.parseInt(jTextFieldPrice.getText());
-             int roomSize = Integer.parseInt(jTextFieldRoomSize.getText());
-             int maxPersons = Integer.parseInt(jTextFieldMaxPersons.getText());
+              price = Integer.parseInt(jTextFieldPrice.getText());
+              roomSize = Integer.parseInt(jTextFieldRoomSize.getText());
+              maxPersons = Integer.parseInt(jTextFieldMaxPersons.getText());
              
          } catch (Exception e) {
+             System.out.println("Price,room size and max persons are only for integer values");
              return;
          }
-         if(jRadioButtonAllinclusive.isSelected()){  
-             allInclusive = true;
-             terrace = true;
-             seaview = true;
-             livingRoom = true;
-             smoke = true;
-             System.out.println("asfasdgfsadfghsdgsdfgdfg");
-             jRadioButtonSeaView.enable();
-             jRadioButtonSmoke.enable();
-             jRadioButtonTerrace.enable();
-             jRadioButtonlivingRoom.enable();  
-             
-         }else{
-             if(jRadioButtonlivingRoom.isSelected()){
-                 livingRoom = true;
-             }
-             if(jRadioButtonSeaView.isSelected()){
-                 seaview = true;
-             }
-             if (jRadioButtonSmoke.isSelected()) {
-                 smoke = true;
-             }
-             if(jRadioButtonTerrace.isSelected()){
-                 terrace = true;
-             }
-         } 
+         
+         RoomType newRoomType = new RoomType(Bedding, maxPersons, roomType, description, livingRoom, terrace, seaview, allInclusive, smoke, roomSize, price);
+         newGlobals.setNewRoomType(newRoomType);
+         
+          
      }
 
     /**
@@ -157,18 +140,38 @@ public class NewRoomType extends javax.swing.JFrame {
         jRadioButtonlivingRoom.setBackground(java.awt.Color.darkGray);
         jRadioButtonlivingRoom.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonlivingRoom.setText("Living Room");
+        jRadioButtonlivingRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonlivingRoomActionPerformed(evt);
+            }
+        });
 
         jRadioButtonSeaView.setBackground(java.awt.Color.darkGray);
         jRadioButtonSeaView.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonSeaView.setText("Seaview");
+        jRadioButtonSeaView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSeaViewActionPerformed(evt);
+            }
+        });
 
         jRadioButtonTerrace.setBackground(java.awt.Color.darkGray);
         jRadioButtonTerrace.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonTerrace.setText("Terrace");
+        jRadioButtonTerrace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTerraceActionPerformed(evt);
+            }
+        });
 
         jRadioButtonSmoke.setBackground(java.awt.Color.darkGray);
         jRadioButtonSmoke.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonSmoke.setText("Smoke");
+        jRadioButtonSmoke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSmokeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,7 +236,7 @@ public class NewRoomType extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -256,7 +259,6 @@ public class NewRoomType extends javax.swing.JFrame {
                     .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButtonlivingRoom)
                     .addComponent(jRadioButtonTerrace))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButtonSeaView)
@@ -278,6 +280,7 @@ public class NewRoomType extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         AddNewTypeRoom();
+        JOptionPane.showMessageDialog(this,"New Type Room is Added");
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jRadioButtonAllinclusiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAllinclusiveActionPerformed
@@ -287,21 +290,58 @@ public class NewRoomType extends javax.swing.JFrame {
              seaview = true;
              livingRoom = true;
              smoke = true;
-             System.out.println("asfasdgfsadfghsdgsdfgdfg");
-             jRadioButtonSeaView.enable();
-             jRadioButtonSmoke.enable();
-             jRadioButtonTerrace.enable();
-             jRadioButtonlivingRoom.enable();  
+             
+             jRadioButtonSeaView.setEnabled(false);
+             jRadioButtonSmoke.setEnabled(false);
+             jRadioButtonTerrace.setEnabled(false);
+             jRadioButtonlivingRoom.setEnabled(false);
              
          }
         else{  
-             jRadioButtonSeaView.enable(true);
-             jRadioButtonSmoke.enable(true);
-             jRadioButtonTerrace.enable(true);
-             jRadioButtonlivingRoom.enable(true);  
+             jRadioButtonSeaView.setEnabled(true);
+             jRadioButtonSmoke.setEnabled(true);
+             jRadioButtonTerrace.setEnabled(true);
+             jRadioButtonlivingRoom.setEnabled(true); 
+             allInclusive = false;
+             terrace = false;
+             seaview = false;
+             livingRoom = false;
+             smoke = false;
              
          }
     }//GEN-LAST:event_jRadioButtonAllinclusiveActionPerformed
+
+    private void jRadioButtonlivingRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonlivingRoomActionPerformed
+        if ((jRadioButtonlivingRoom.isSelected())&&(!jRadioButtonAllinclusive.isSelected())) {
+            livingRoom = true;
+        }else{
+            livingRoom = false;
+        }
+    }//GEN-LAST:event_jRadioButtonlivingRoomActionPerformed
+
+    private void jRadioButtonTerraceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTerraceActionPerformed
+        if ((jRadioButtonTerrace.isSelected())&&(!jRadioButtonAllinclusive.isSelected())) {
+            terrace = true;
+        }else{
+            terrace = false;
+        }
+    }//GEN-LAST:event_jRadioButtonTerraceActionPerformed
+
+    private void jRadioButtonSeaViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSeaViewActionPerformed
+        if ((jRadioButtonSeaView.isSelected())&&(!jRadioButtonAllinclusive.isSelected())) {
+            seaview = true;
+        }else{
+            seaview = false;
+        }
+    }//GEN-LAST:event_jRadioButtonSeaViewActionPerformed
+
+    private void jRadioButtonSmokeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSmokeActionPerformed
+        if ((jRadioButtonSmoke.isSelected())&&(!jRadioButtonAllinclusive.isSelected())) {
+            smoke = true;
+        }else{
+            smoke = false;
+        }
+    }//GEN-LAST:event_jRadioButtonSmokeActionPerformed
 
     /**
      * @param args the command line arguments

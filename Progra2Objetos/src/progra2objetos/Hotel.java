@@ -7,20 +7,23 @@ public class Hotel {
     private String name;
     private String address;
     private String country;
+    private String Description;
     private int phoneNumber;
     private int stars;
     private String typeAccommodation;
     private String sizeHotel;
-    private ArrayList<Room> roomsList;
-    private ArrayList<Service> servicesList;
-    private ArrayList<Attraction> AttractionList;
-    
     private String timeCheckIn;
     private String timeCheckOut;
     private String requirementsCheckIn;
     private String yearBuilt;
+    
+    private ArrayList<Room> roomsList;
+    private ArrayList<Service> servicesList;
+    private ArrayList<Attraction> AttractionList;
+    
+    
 
-    public Hotel(String name, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, String timeCheckIn, String timeCheckOu, String requirementsCheckIn, String yearBuilt) {
+    public Hotel(String name,String Description, String address, String country, int phoneNumber, int stars, String typeAccommodation, String sizeHotel, String timeCheckIn, String timeCheckOu, String requirementsCheckIn, String yearBuilt) {
         this.name = name;
         this.address = address;
         this.country = country;
@@ -32,6 +35,7 @@ public class Hotel {
         this.timeCheckOut = timeCheckOu;
         this.requirementsCheckIn = requirementsCheckIn;
         this.yearBuilt = yearBuilt;
+        this.Description = Description;
         this.roomsList = new ArrayList<>();
         this.servicesList = new ArrayList<>();
         this.AttractionList = new ArrayList<>();
@@ -147,6 +151,14 @@ public class Hotel {
 
     public void setYearBuilt(String yearBuilt) {
         this.yearBuilt = yearBuilt;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     

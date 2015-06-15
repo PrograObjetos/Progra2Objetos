@@ -103,7 +103,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldPrice" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -131,7 +131,6 @@
                   <Component id="jRadioButtonlivingRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRadioButtonTerrace" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jRadioButtonSeaView" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -271,6 +270,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Living Room"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonlivingRoomActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonSeaView">
       <Properties>
@@ -282,6 +284,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Seaview"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSeaViewActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonTerrace">
       <Properties>
@@ -293,6 +298,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Terrace"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonTerraceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonSmoke">
       <Properties>
@@ -304,6 +312,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Smoke"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSmokeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

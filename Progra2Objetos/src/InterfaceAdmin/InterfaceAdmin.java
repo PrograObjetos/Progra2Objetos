@@ -26,6 +26,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         DefaultTableModel mdService;
         DefaultTableModel mdAttraction;
         DefaultTableModel mdRoomTypes;
+        DefaultTableModel mdHotels;
         
         
         
@@ -40,6 +41,10 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Admin Options");
         
+        //table Hotels----------------------------------------------------------
+        mdHotels = (DefaultTableModel)jTableHotels.getModel();
+        jTableHotels.setModel(mdHotels);
+        loadHotels();
         //table Room Types------------------------------------------------------
         mdRoomTypes = (DefaultTableModel)jTableRoomTypes.getModel();
         jTableRoomTypes.setModel(mdRoomTypes);
@@ -57,6 +62,27 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         
           
         
+    }
+   //Hotels Table------------------------------------------------------------------------------------------------------
+    public void loadHotels(){
+        if(newGlobals.getHotelsList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newGlobals.getHotelsList().size(); i++) {
+                mdHotels.addRow( new Object[]{newGlobals.getHotelsList().get(i).getName() ,
+                    newGlobals.getHotelsList().get(i).getPhoneNumber(),
+                    newGlobals.getHotelsList().get(i).getDescription(),
+                    newGlobals.getHotelsList().get(i).getStars(),
+                    newGlobals.getHotelsList().get(i).getAddress(),
+                    newGlobals.getHotelsList().get(i).getCountry(),
+                    newGlobals.getHotelsList().get(i).getTypeAccommodation(),
+                    newGlobals.getHotelsList().get(i).getSizeHotel(),
+                    newGlobals.getHotelsList().get(i).getTimeCheckIn(),
+                    newGlobals.getHotelsList().get(i).getTimeCheckOut(),
+                    newGlobals.getHotelsList().get(i).getRequirementsCheckIn(),
+                    newGlobals.getHotelsList().get(i).getYearBuilt()} ); 
+            }
+        }
     }
    //Room Types Table--------------------------------------------------------------------------------------------------
     public void loadRoomTypes(){
@@ -162,7 +188,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jTableHotels = new javax.swing.JTable();
         BtnBack = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableRoomTypes = new javax.swing.JTable();
@@ -223,7 +248,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Phone Number", "Description", "Stars"
+                "Name", "Phone Number", "Descripcion", "Stars", "address", "Country", "Type Accommodation", "Size Hotel", "Check in Time", "Check out Time", "Requirements check in", "Year Built"
             }
         ));
         jScrollPane1.setViewportView(jTableHotels);
@@ -239,44 +264,30 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jButton2.setText("See Hotel");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton3.setText("Add Rooms");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton2)
-                        .addGap(236, 236, 236)
-                        .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jButton2)
+                .addGap(236, 236, 236)
+                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNewHotel)
                     .addComponent(jButton1)
@@ -700,12 +711,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         newI.setVisible(true);
     }//GEN-LAST:event_jButtonback3ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       this.dispose();
-       NewRooms newRoom = new NewRooms();
-       newRoom.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButtonNewTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTypeActionPerformed
         NewRoomType newRoomTypeWindows = new NewRoomType();
         this.dispose();
@@ -751,7 +756,6 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAddAttraction;
     private javax.swing.JButton jButtonAddSeason;

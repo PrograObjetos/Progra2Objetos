@@ -86,6 +86,9 @@ public class Globals {
     public void setActualHotelNull(){
         instance.actualHotel = null;
     }
+    public void setNewHotel(Hotel newHotel){
+        instance.hotelsList.add(newHotel);
+    }
     
     
     public void addHotel(){

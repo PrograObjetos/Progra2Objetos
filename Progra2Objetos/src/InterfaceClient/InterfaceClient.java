@@ -16,6 +16,8 @@ import progra2objetos.Client;
 import java.util.GregorianCalendar;
 import javax.swing.table.DefaultTableModel;
 import progra2objetos.Card;
+import progra2objetos.Hotel;
+
 //import sun.org.mozilla.javascript.internal.ScriptRuntime;
 
 /**
@@ -26,7 +28,11 @@ public class InterfaceClient extends javax.swing.JFrame {
 
        Globals newglobals = Globals.getInstance();
        Card newcard;
+       
        DefaultTableModel mdCard;
+       DefaultTableModel mdHotels;
+       
+       
     /**
      * Creates new form InterfaceCliente
      */
@@ -38,13 +44,41 @@ public class InterfaceClient extends javax.swing.JFrame {
         setTitle("Interface Client");
         
         
-        //table Services--------------------------------------------------------
+        //table Card-------------------------------------------------------
         mdCard = (DefaultTableModel)TableCard.getModel();
         TableCard.setModel(mdCard);
         loadCard();
         
+        //table Hotels----------------------------------------------------------
+        mdHotels = (DefaultTableModel)TableHotels.getModel();
+        TableHotels.setModel(mdHotels);
+        loadHotels();
         
+  
+
         
+    }
+    
+       //Hotels Table------------------------------------------------------------------------------------------------------
+    public void loadHotels(){
+        if(newglobals.getHotelsList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newglobals.getHotelsList().size(); i++) {
+                mdHotels.addRow( new Object[]{newglobals.getHotelsList().get(i).getName() ,
+                    newglobals.getHotelsList().get(i).getPhoneNumber(),
+                    newglobals.getHotelsList().get(i).getDescription(),
+                    newglobals.getHotelsList().get(i).getStars(),
+                    newglobals.getHotelsList().get(i).getAddress(),
+                    newglobals.getHotelsList().get(i).getCountry(),
+                    newglobals.getHotelsList().get(i).getTypeAccommodation(),
+                    newglobals.getHotelsList().get(i).getSizeHotel(),
+                    newglobals.getHotelsList().get(i).getTimeCheckIn(),
+                    newglobals.getHotelsList().get(i).getTimeCheckOut(),
+                    newglobals.getHotelsList().get(i).getRequirementsCheckIn(),
+                    newglobals.getHotelsList().get(i).getYearBuilt()} ); 
+            }
+        }
     }
     
     public void loadCard(){
@@ -77,6 +111,11 @@ public class InterfaceClient extends javax.swing.JFrame {
         Genero = new javax.swing.ButtonGroup();
         TableClient = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TableHotels = new javax.swing.JTable();
+        BtnRoom = new javax.swing.JButton();
+        BtnServices = new javax.swing.JButton();
+        BtnAttractions = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -139,15 +178,66 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        TableHotels.setBackground(new java.awt.Color(51, 51, 51));
+        TableHotels.setForeground(new java.awt.Color(255, 255, 255));
+        TableHotels.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "PhoneNumber", "Description", "Stars", "Address", "Country", "Type Accommodation", "Size Hotel", "Check In Time", "Check Out Time", "Requirements Check In", "Year Built"
+            }
+        ));
+        jScrollPane2.setViewportView(TableHotels);
+
+        BtnRoom.setText("Veiw Room");
+        BtnRoom.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRoomActionPerformed(evt);
+            }
+        });
+
+        BtnServices.setText("View Services");
+        BtnServices.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnServicesActionPerformed(evt);
+            }
+        });
+
+        BtnAttractions.setText("View Atracctions");
+        BtnAttractions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAttractions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAttractionsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 787, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(BtnRoom)
+                .addGap(140, 140, 140)
+                .addComponent(BtnServices)
+                .addGap(143, 143, 143)
+                .addComponent(BtnAttractions)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnRoom)
+                    .addComponent(BtnServices)
+                    .addComponent(BtnAttractions))
+                .addGap(54, 54, 54))
         );
 
         TableClient.addTab("Hotels", jPanel2);
@@ -163,7 +253,7 @@ public class InterfaceClient extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGap(0, 423, Short.MAX_VALUE)
         );
 
         TableClient.addTab("Reservations", jPanel3);
@@ -314,7 +404,7 @@ public class InterfaceClient extends javax.swing.JFrame {
                             .addComponent(ComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(BtnAddCard)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         TableClient.addTab("Card", jPanel4);
@@ -344,7 +434,7 @@ public class InterfaceClient extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 203, Short.MAX_VALUE))
+                .addGap(0, 232, Short.MAX_VALUE))
         );
 
         TableClient.addTab("View Cards", jPanel5);
@@ -564,7 +654,7 @@ public class InterfaceClient extends javax.swing.JFrame {
                     .addComponent(RadioButtonFemenino)
                     .addComponent(RadioButtonMasculino)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -579,11 +669,11 @@ public class InterfaceClient extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TableClient, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addComponent(TableClient)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TableClient, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(TableClient)
         );
 
         pack();
@@ -805,6 +895,32 @@ public class InterfaceClient extends javax.swing.JFrame {
         ComboBoxTypeCard.addItem(txtAddCard.getText());
     }//GEN-LAST:event_BtnAddTypeCardActionPerformed
 
+    private void BtnAttractionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAttractionsActionPerformed
+        this.dispose();
+        ViewAttraction nAttraction = new ViewAttraction();
+        nAttraction.setVisible(true);
+        /*
+        mdHotels = (DefaultTableModel)TableHotels.getModel();
+        if(TableHotels.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Hotel");
+            return;
+        }  
+        
+        */
+    }//GEN-LAST:event_BtnAttractionsActionPerformed
+
+    private void BtnServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnServicesActionPerformed
+        this.dispose();
+        ViewService nService = new ViewService();
+        nService.setVisible(true);
+    }//GEN-LAST:event_BtnServicesActionPerformed
+
+    private void BtnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRoomActionPerformed
+       this.dispose();
+       ViewRoom nRoom = new ViewRoom();
+       nRoom.setVisible(true);
+    }//GEN-LAST:event_BtnRoomActionPerformed
+
     
     
     public static void main(String args[]) {
@@ -843,10 +959,13 @@ public class InterfaceClient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAddCard;
     private javax.swing.JButton BtnAddTypeCard;
+    private javax.swing.JButton BtnAttractions;
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnData;
     private javax.swing.JButton BtnEdit;
     private javax.swing.JButton BtnProfile;
+    private javax.swing.JButton BtnRoom;
+    private javax.swing.JButton BtnServices;
     private javax.swing.JComboBox ComboBoxAno;
     private javax.swing.JComboBox ComboBoxCurrency;
     private javax.swing.JComboBox ComboBoxDia;
@@ -857,6 +976,7 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JRadioButton RadioButtonMasculino;
     private javax.swing.JTable TableCard;
     private javax.swing.JTabbedPane TableClient;
+    private javax.swing.JTable TableHotels;
     private javax.swing.JTextField TextFieldAge;
     private javax.swing.JTextField TextFieldCountry;
     private javax.swing.JTextField TextFieldEmail;
@@ -892,6 +1012,7 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txtAddCard;
     private javax.swing.JTextField txtCardNumber;
     private javax.swing.JTextField txtNameTitularCard;

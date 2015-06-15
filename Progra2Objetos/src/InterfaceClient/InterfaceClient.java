@@ -896,72 +896,27 @@ public class InterfaceClient extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAddTypeCardActionPerformed
 
     private void BtnAttractionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAttractionsActionPerformed
-
-        
+        this.dispose();
+        ViewAttraction nAttraction = new ViewAttraction();
+        nAttraction.setVisible(true);
+        /*
         mdHotels = (DefaultTableModel)TableHotels.getModel();
         if(TableHotels.getSelectedRowCount()== 0){
             JOptionPane.showMessageDialog(this,"please select the Hotel");
             return;
         }  
         
-        String HotelName;
-        int TempSelectRow = TableHotels.getSelectedRow();
-        HotelName = mdHotels.getValueAt(TempSelectRow, 0).toString();
-        
-        for(int i = 0; i <  newglobals.getHotelsList().size(); i++){
-            if(newglobals.getHotelsList().get(i).getName().equals(HotelName)){
-                newglobals.setActualHotel(newglobals.getHotelsList().get(i));
-            }
-            
-        }
-        
-        this.dispose();
-        ViewAttraction nAttraction = new ViewAttraction();
-        nAttraction.setVisible(true);        
-        
+        */
     }//GEN-LAST:event_BtnAttractionsActionPerformed
 
     private void BtnServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnServicesActionPerformed
-
-        
-        mdHotels = (DefaultTableModel)TableHotels.getModel();
-        if(TableHotels.getSelectedRowCount()== 0){
-            JOptionPane.showMessageDialog(this,"please select the Hotel");
-            return;
-        }  
-        
-        String HotelName;
-        int TempSelectRow = TableHotels.getSelectedRow();
-        HotelName = mdHotels.getValueAt(TempSelectRow, 0).toString();       
-        for(int i = 0; i <  newglobals.getHotelsList().size(); i++){
-            if(newglobals.getHotelsList().get(i).getName().equals(HotelName)){
-                newglobals.setActualHotel(newglobals.getHotelsList().get(i));
-            }
-            
-        }   
-        
         this.dispose();
         ViewService nService = new ViewService();
         nService.setVisible(true);
     }//GEN-LAST:event_BtnServicesActionPerformed
 
     private void BtnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRoomActionPerformed
-        mdHotels = (DefaultTableModel)TableHotels.getModel();
-        if(TableHotels.getSelectedRowCount()== 0){
-            JOptionPane.showMessageDialog(this,"please select the Hotel");
-            return;
-        }  
-        
-        String HotelName;
-        int TempSelectRow = TableHotels.getSelectedRow();
-        HotelName = mdHotels.getValueAt(TempSelectRow, 0).toString();
-        for(int i = 0; i <  newglobals.getHotelsList().size(); i++){
-            if(newglobals.getHotelsList().get(i).getName().equals(HotelName)){
-                newglobals.setActualHotel(newglobals.getHotelsList().get(i));
-            }
-            
-        }
-        this.dispose();
+       this.dispose();
        ViewRoom nRoom = new ViewRoom();
        nRoom.setVisible(true);
     }//GEN-LAST:event_BtnRoomActionPerformed

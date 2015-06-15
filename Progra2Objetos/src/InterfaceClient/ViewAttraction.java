@@ -5,6 +5,7 @@
  */
 package InterfaceClient;
 
+import globals.Globals;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author cristian
  */
 public class ViewAttraction extends javax.swing.JFrame {
-    
+    Globals newglobals = Globals.getInstance();
     DefaultTableModel mdAttractions;
 
 
@@ -28,9 +29,20 @@ public class ViewAttraction extends javax.swing.JFrame {
         //table Attractions-------------------------------------------------------
         mdAttractions = (DefaultTableModel)TableAttractions.getModel();
         TableAttractions.setModel(mdAttractions);
-        //loadAttractions();
+        loadAttactions();
         
         
+    }
+    public void loadAttactions(){
+        if(newglobals.getActualHotel().getAttractionList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newglobals.getActualHotel().getAttractionList().size(); i++) {
+                mdAttractions.addRow( new Object[]{newglobals.getActualHotel().getAttractionList().get(i).getID() ,
+                    newglobals.getActualHotel().getAttractionList().get(i).getAttractionName(),
+                    } ); 
+            }
+        }
     }
 
     /**
@@ -81,9 +93,8 @@ public class ViewAttraction extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(38, 38, 38)
                 .addComponent(BtnBack)
                 .addContainerGap(33, Short.MAX_VALUE))
         );

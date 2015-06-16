@@ -13,8 +13,8 @@ public class Progra2Objetos {
        
                 
         
-        Client nc1 = new Client("Cristian","Miguel","Male","c","b08c8c585b6d67164c163767076445d6", "cristian",1,20,"Costa Rica",85794421,"colones");
-        Client nc2 = new Client("Kevin","Andres","Male","k","9d5e3ecdeb4cdb7acfd63075ae046672", "kevin",2,20,"Mexico",87892400,"dollars");
+        Client nc1 = new Client("Cristian","Miguel","Male","Cristian@gmail.com","b08c8c585b6d67164c163767076445d6", "cristian",1,20,"Costa Rica",85794421,"colones");
+        Client nc2 = new Client("Kevin","Andres","Male","kenpachi@gmail.com","9d5e3ecdeb4cdb7acfd63075ae046672", "kevin",2,20,"Mexico",87892400,"dollars");
         
         GregorianCalendar date = new GregorianCalendar();
         date.set(2015, 11, 31);
@@ -115,14 +115,6 @@ public class Progra2Objetos {
         Globals.getInstance().getActualHotel().setNewRoom(nRoom);
         Globals.getInstance().getActualHotel().setNewRoom(nRoom2);    
        
-        
-        Globals.getInstance().setNewService(nService);
-        Globals.getInstance().setNewService(nService2);
-        Globals.getInstance().setNewService(nService3);
-        
-        Globals.getInstance().setNewAttraction(nAttraction);
-        Globals.getInstance().setNewAttraction(nAttraction2);
-        Globals.getInstance().setNewAttraction(nAttraction3);
         
 
         Login nl = new Login();

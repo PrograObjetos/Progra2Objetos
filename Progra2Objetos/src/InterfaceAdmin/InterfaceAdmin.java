@@ -8,6 +8,7 @@ package InterfaceAdmin;
 import Interface.Login;
 import globals.Globals;
 import java.awt.Color;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import progra2objetos.Attraction;
@@ -43,7 +44,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setTitle("Admin Options");
         
         //tableSeasons----------------------------------------------------------
-        
+        mdSeasons = (DefaultTableModel)jTableSeasons.getModel();
+        jTableSeasons.setModel(mdSeasons);
+        loadSeasons();
         
         //table Hotels----------------------------------------------------------
         mdHotels = (DefaultTableModel)jTableHotels.getModel();
@@ -66,6 +69,24 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         
           
         
+    }
+   //Season Table---------------------------------------------------------------
+    public void loadSeasons(){
+        GregorianCalendar startDate = new GregorianCalendar();
+        GregorianCalendar endDate = new GregorianCalendar();
+        
+        if(newGlobals.getSeasonsList().isEmpty()){
+            return;
+        }else{
+            for(int i = 0; i < newGlobals.getSeasonsList().size(); i++) {
+                startDate.setTime(newGlobals.getSeasonsList().get(i).getStartDate());
+                endDate.setTime(newGlobals.getSeasonsList().get(i).getEndDate()); 
+                mdSeasons.addRow( new Object[]{newGlobals.getSeasonsList().get(i).getName() ,
+                    newGlobals.getSeasonsList().get(i).getCode(),
+                    Integer.toString(startDate.get(2))+" / "+ Integer.toString(startDate.get(5)),
+                    Integer.toString(endDate.get(2))+" / "+ Integer.toString(endDate.get(5))}); 
+            }
+        }
     }
    //Hotels Table------------------------------------------------------------------------------------------------------
     public void loadHotels(){
@@ -776,7 +797,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteTypeActionPerformed
 
     private void jButtonAddSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSeasonActionPerformed
-       
+          NewSeason newSeason = new NewSeason();
+          this.dispose();
+          newSeason.setVisible(true);
     }//GEN-LAST:event_jButtonAddSeasonActionPerformed
 
     /**

@@ -104,22 +104,27 @@ public class NewSeason extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("End Date");
 
-        jComboBoxMesStartDate.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBoxMesStartDate.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxMesStartDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
-        jComboBoxMesEndDate.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBoxMesEndDate.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxMesEndDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
-        jComboBoxDiaEndDate.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBoxDiaEndDate.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxDiaEndDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        jComboBoxDiaStartDate.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBoxDiaStartDate.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxDiaStartDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack.setForeground(new java.awt.Color(0, 0, 0));
         jButtonBack.setText("back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
 
-        jButtonSave.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSave.setForeground(new java.awt.Color(0, 0, 0));
         jButtonSave.setText("Save");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +211,12 @@ public class NewSeason extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         addNewSeason();
     }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        InterfaceAdmin windows = new InterfaceAdmin();
+        this.dispose();
+        windows.setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
      * @param args the command line arguments

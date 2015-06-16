@@ -88,6 +88,15 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         }
     }
+    public void deleteSeason(String SeasonName){
+        for (int i = 0; i < newGlobals.getSeasonsList().size(); i++) {
+            if(newGlobals.getSeasonsList().get(i).getName().equals(SeasonName)){
+                newGlobals.getSeasonsList().remove(i);
+            }
+        }
+    }
+    
+    
    //Hotels Table------------------------------------------------------------------------------------------------------
     public void loadHotels(){
         if(newGlobals.getHotelsList().isEmpty()){
@@ -226,7 +235,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButtonNewHotel = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonDeleteHotel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHotels = new javax.swing.JTable();
         BtnBack = new javax.swing.JButton();
@@ -278,11 +287,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Delete Hotel");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeleteHotel.setText("Delete Hotel");
+        jButtonDeleteHotel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonDeleteHotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonDeleteHotelActionPerformed(evt);
             }
         });
 
@@ -315,7 +324,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jButtonNewHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(361, 361, 361)
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(143, Short.MAX_VALUE))
@@ -331,7 +340,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNewHotel)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonDeleteHotel)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
@@ -435,6 +444,11 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         jButtonDeleteSEason.setText("Delete Season");
         jButtonDeleteSEason.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonDeleteSEason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteSEasonActionPerformed(evt);
+            }
+        });
 
         jButtonBack1.setText("Back");
         jButtonBack1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -450,14 +464,16 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(85, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButtonSeePriceRooms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonPriceRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
-                        .addGap(163, 163, 163)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAddSeason, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonDeleteSEason, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButtonSeePriceRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)
+                                .addComponent(jButtonPriceRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButtonAddSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButtonDeleteSEason)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                         .addComponent(jButtonBack1)
                         .addGap(25, 25, 25))))
         );
@@ -470,12 +486,12 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonPriceRoom)
-                            .addComponent(jButtonAddSeason))
+                            .addComponent(jButtonAddSeason)
+                            .addComponent(jButtonDeleteSEason))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonDeleteSEason)
-                            .addComponent(jButtonSeePriceRooms))
+                            .addComponent(jButtonSeePriceRooms)
+                            .addComponent(jButtonPriceRoom))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonBack1)
@@ -765,7 +781,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         newRoomTypeWindows.setVisible(true);
     }//GEN-LAST:event_jButtonNewTypeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonDeleteHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteHotelActionPerformed
         mdHotels = (DefaultTableModel)jTableHotels.getModel();
         if(jTableHotels.getSelectedRowCount()== 0){
             JOptionPane.showMessageDialog(this,"please select the Hotel to delete");
@@ -779,7 +795,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         deleteHotel(HotelName);
         mdHotels.removeRow(jTableHotels.getSelectedRow());
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonDeleteHotelActionPerformed
 
     private void jButtonDeleteTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTypeActionPerformed
         mdRoomTypes = (DefaultTableModel)jTableRoomTypes.getModel();
@@ -801,6 +817,21 @@ public class InterfaceAdmin extends javax.swing.JFrame {
           this.dispose();
           newSeason.setVisible(true);
     }//GEN-LAST:event_jButtonAddSeasonActionPerformed
+
+    private void jButtonDeleteSEasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteSEasonActionPerformed
+        mdSeasons = (DefaultTableModel)jTableSeasons.getModel();
+        if(jTableSeasons.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Season to delete");
+            return;
+        }
+        
+        
+        String SeasonName;
+        int TempSelectRow = jTableSeasons.getSelectedRow();
+        SeasonName = mdSeasons.getValueAt(TempSelectRow, 0).toString();
+        deleteSeason(SeasonName);
+        mdSeasons.removeRow(jTableSeasons.getSelectedRow());
+    }//GEN-LAST:event_jButtonDeleteSEasonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -839,13 +870,13 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddAttraction;
     private javax.swing.JButton jButtonAddSeason;
     private javax.swing.JButton jButtonAddService;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonDeleteAttraction;
+    private javax.swing.JButton jButtonDeleteHotel;
     private javax.swing.JButton jButtonDeleteSEason;
     private javax.swing.JButton jButtonDeleteService;
     private javax.swing.JButton jButtonDeleteType;

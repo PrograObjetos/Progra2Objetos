@@ -27,6 +27,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         DefaultTableModel mdAttraction;
         DefaultTableModel mdRoomTypes;
         DefaultTableModel mdHotels;
+        DefaultTableModel mdSeasons;
         
         
         
@@ -40,6 +41,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Admin Options");
+        
+        //tableSeasons----------------------------------------------------------
+        
         
         //table Hotels----------------------------------------------------------
         mdHotels = (DefaultTableModel)jTableHotels.getModel();

@@ -14,6 +14,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import progra2objetos.Client;
 //import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import progra2objetos.Card;
 import progra2objetos.Hotel;
@@ -28,7 +29,7 @@ public class InterfaceClient extends javax.swing.JFrame {
 
        Globals newglobals = Globals.getInstance();
        Card newcard;
-       
+       DefaultListModel mdRoom;
        DefaultTableModel mdCard;
        DefaultTableModel mdHotels;
        
@@ -53,11 +54,21 @@ public class InterfaceClient extends javax.swing.JFrame {
         mdHotels = (DefaultTableModel)TableHotels.getModel();
         TableHotels.setModel(mdHotels);
         loadHotels();
+        loadRoomReresvation();
+
         
-  
 
         
     }
+
+    //siewRoom----------------------------------------------------------------------------------------------------------
+    public void loadRoomReresvation(){
+        mdRoom = new DefaultListModel();    
+        JtableRoomHotel.setModel(mdRoom);
+        for (int i = 0; i < newglobals.getActualHotel().getRoomsList().size(); i++) {       
+            mdRoom.addElement(newglobals.getActualHotel().getRoomsList().get(i).getRoomType().getRoomType());
+        }
+    }    
     
        //Hotels Table------------------------------------------------------------------------------------------------------
     public void loadHotels(){
@@ -117,6 +128,12 @@ public class InterfaceClient extends javax.swing.JFrame {
         BtnServices = new javax.swing.JButton();
         BtnAttractions = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTableRoomReservation = new javax.swing.JList();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JtableRoomHotel = new javax.swing.JList();
+        BtnAdd = new javax.swing.JButton();
+        BtnDelete = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -245,15 +262,53 @@ public class InterfaceClient extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
+        JTableRoomReservation.setForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane3.setViewportView(JTableRoomReservation);
+
+        JtableRoomHotel.setForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane4.setViewportView(JtableRoomHotel);
+
+        BtnAdd.setText("Add");
+        BtnAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAddActionPerformed(evt);
+            }
+        });
+
+        BtnDelete.setText("Delete");
+        BtnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 787, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(248, 248, 248)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BtnAdd)
+                    .addComponent(BtnDelete))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(BtnAdd)
+                        .addGap(43, 43, 43)
+                        .addComponent(BtnDelete)))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         TableClient.addTab("Reservations", jPanel3);
@@ -965,6 +1020,12 @@ public class InterfaceClient extends javax.swing.JFrame {
        nRoom.setVisible(true);
     }//GEN-LAST:event_BtnRoomActionPerformed
 
+    private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
+        //String selectedValueA = JtableRoomHotel.getSelectedValue().toString();
+        
+        //JTableRoomReservation.adde(selectedValueA);
+    }//GEN-LAST:event_BtnAddActionPerformed
+
     
     
     public static void main(String args[]) {
@@ -1001,11 +1062,13 @@ public class InterfaceClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAdd;
     private javax.swing.JButton BtnAddCard;
     private javax.swing.JButton BtnAddTypeCard;
     private javax.swing.JButton BtnAttractions;
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnData;
+    private javax.swing.JButton BtnDelete;
     private javax.swing.JButton BtnEdit;
     private javax.swing.JButton BtnProfile;
     private javax.swing.JButton BtnRoom;
@@ -1016,6 +1079,8 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JComboBox ComboBoxMes;
     private javax.swing.JComboBox ComboBoxTypeCard;
     private javax.swing.ButtonGroup Genero;
+    private javax.swing.JList JTableRoomReservation;
+    private javax.swing.JList JtableRoomHotel;
     private javax.swing.JRadioButton RadioButtonFemenino;
     private javax.swing.JRadioButton RadioButtonMasculino;
     private javax.swing.JTable TableCard;
@@ -1057,6 +1122,8 @@ public class InterfaceClient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField txtAddCard;
     private javax.swing.JTextField txtCardNumber;
     private javax.swing.JTextField txtNameTitularCard;

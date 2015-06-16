@@ -51,12 +51,14 @@ public class Progra2Objetos {
         Service nService2 = new Service(2, "Cable");
         Service nService3 = new Service(3, "Comida Gratis");
         
-        RoomType nRoomType = new RoomType("Lana", 6, "Suit", "Linda", true, true, true, true, false, 50, 5000);
-        RoomType nRoomType2 = new RoomType("Seda", 2, "Doble", "Regular", true, true, true, true, false, 25, 2500);
+        RoomType nRoomType = new RoomType("Doble", 6, "Suit", "Linda", true, true, true, true, true, 50, 5000);
+        RoomType nRoomType2 = new RoomType("Individual", 2, "Doble", "Regular", true, true, true, true, true, 25, 2500);
+        RoomType nRoomType3 = new RoomType("Familiar", 2, "Doble", "Regular", true, false, true, false, false, 5, 2100);
         
         
-        Room nRoom = new Room(1, "Mosaico", "Pedro", "Antonio", 5, 3, nRoomType);
-        Room nRoom2 = new Room(2, "Ceramica", "Carlos", "Miguel",2 , 1, nRoomType2);
+        Room nRoom = new Room(1, "piso1", "Pedro", "Antonio", 5, 3, nRoomType);
+        Room nRoom2 = new Room(2, "piso2", "Carlos", "Miguel",2 , 1, nRoomType2);
+        Room nRoom3 = new Room(3, "piso3", "Maria", "Julia",5 , 2, nRoomType3);
         
         Globals.getInstance().setActualClient(nc1);
         
@@ -100,6 +102,8 @@ public class Progra2Objetos {
         Globals.getInstance().getActualHotel().setNewService(nService3);
         Globals.getInstance().getActualHotel().setNewRoom(nRoom);
         Globals.getInstance().getActualHotel().setNewRoom(nRoom2);
+        Globals.getInstance().getActualHotel().setNewRoom(nRoom3);
+        
         
         Globals.getInstance().setActualHotel(nHote12);
         Globals.getInstance().getActualHotel().setNewAttraction(nAttraction);

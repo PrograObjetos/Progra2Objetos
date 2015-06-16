@@ -7,6 +7,7 @@ package InterfaceClient;
 
 import globals.Globals;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,6 +53,7 @@ public class ViewRoom extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableRoom = new javax.swing.JTable();
         BtnBack = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,23 +75,35 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Ver characteristic Room");
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(312, 312, 312)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -100,6 +114,31 @@ public class ViewRoom extends javax.swing.JFrame {
         InterfaceClient nclient = new InterfaceClient();
         nclient.setVisible(true);
     }//GEN-LAST:event_BtnBackActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        mdRoom = (DefaultTableModel)TableRoom.getModel();
+        if(TableRoom.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this,"please select the Room");
+            return;
+        }  
+        
+        int RoomNumber;
+        int TempSelectRow = TableRoom.getSelectedRow();
+        RoomNumber = (int) mdRoom.getValueAt(TempSelectRow, 0);
+        for(int i = 0; i <  newglobals.getActualHotel().getRoomsList().size(); i++){
+            if(newglobals.getActualHotel().getRoomsList().get(i).getRoomnumber()== (RoomNumber)){
+                newglobals.setActualRoom(newglobals.getActualHotel().getRoomsList().get(i));
+            }
+            
+        }
+        
+        
+        
+        this.dispose();
+        CharacteristicRoom n = new CharacteristicRoom();
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +178,7 @@ public class ViewRoom extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
     private javax.swing.JTable TableRoom;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

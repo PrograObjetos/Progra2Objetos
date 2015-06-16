@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import progra2objetos.Admin;
 import progra2objetos.Attraction;
 import progra2objetos.Hotel;
+import progra2objetos.Room;
 import progra2objetos.RoomType;
 import progra2objetos.Season;
 import progra2objetos.Service;
@@ -21,6 +22,7 @@ public class Globals {
      private ArrayList<Season> SeasonsList = new ArrayList<>();
      private Hotel actualHotel;
      private Client actualClient;
+     private Room actualRoom;
 
 
      
@@ -111,6 +113,14 @@ public class Globals {
 
     public void setNewSeasons(Season newSeasons) {
         instance.SeasonsList.add(newSeasons);
+    }
+
+    public Room getActualRoom() {
+        return actualRoom;
+    }
+
+    public void setActualRoom(Room actualRoom) {
+        this.actualRoom = actualRoom;
     }
     
     

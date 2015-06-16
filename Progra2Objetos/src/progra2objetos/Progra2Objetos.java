@@ -47,6 +47,8 @@ public class Progra2Objetos {
         Attraction nAttraction2 = new Attraction(2, "Volcanes");
         Attraction nAttraction3 = new Attraction(3, "Zona Verde");
         
+        
+        
         Service nService = new Service(1, "Wifi");
         Service nService2 = new Service(2, "Cable");
         Service nService3 = new Service(3, "Comida Gratis");
@@ -114,7 +116,13 @@ public class Progra2Objetos {
         Globals.getInstance().getActualHotel().setNewRoom(nRoom2);    
        
         
+        Globals.getInstance().setNewService(nService);
+        Globals.getInstance().setNewService(nService2);
+        Globals.getInstance().setNewService(nService3);
         
+        Globals.getInstance().setNewAttraction(nAttraction);
+        Globals.getInstance().setNewAttraction(nAttraction2);
+        Globals.getInstance().setNewAttraction(nAttraction3);
         
 
         Login nl = new Login();
